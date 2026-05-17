@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interview Previews — PRD as Boundary Object | Wang Wei, KCL</title>
+<meta name="description" content="Interview preview documents for participants of an MSc dissertation study on PRDs as boundary objects in cross-functional product development.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Tab radios (must be siblings of .tab-nav and main for CSS to work) -->
+<input type="radio" name="tab" id="tab-pm" class="tab-radio" checked>
+<input type="radio" name="tab" id="tab-designer" class="tab-radio">
+<input type="radio" name="tab" id="tab-backend" class="tab-radio">
+<input type="radio" name="tab" id="tab-backend-en" class="tab-radio">
+<input type="radio" name="tab" id="tab-ios" class="tab-radio">
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title">PRD as Boundary Object <em>· Interview Previews</em></h1>
+    <div class="site-meta">
+      <span>KCL · MSc MTC</span>
+      <span>Wang Wei · AG08404</span>
+      <span>2026</span>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="hero-eyebrow">Research Study · Phase One Interview Previews</span>
+  <h2 class="hero-title">PRD as a Boundary Object in Cross-Functional Teams</h2>
+  <p class="hero-deck">
+    本頁集合給五位受訪者的訪談預覽文件。請於下方選擇對應您身份的分頁閱讀,作為正式訪談前的脈絡熱身。每個分頁的第一個區塊為<strong>受訪者同意書</strong>(請先閱讀),其下為該角色的訪談內容預覽。
+    <br><br>
+    <strong>無須事前準備答案,亦無須事前回覆任何題目</strong>。任何疑問請直接回覆訊息。
+  </p>
+  <dl class="hero-meta">
+    <span><strong>Title</strong> · PRD as Boundary Object: Use, Translation, and Tool Intervention</span>
+    <span><strong>Researcher</strong> · Wang Wei (AG08404)</span>
+    <span><strong>Programme</strong> · MSc Management &amp; Technological Change · King's College London</span>
+  </dl>
+</section>
+
+<nav class="tab-nav" aria-label="Role selector">
+  <div class="tab-nav-inner" role="tablist">
+    <label for="tab-pm"        role="tab"><span class="tab-num">01</span>Product Manager</label>
+    <label for="tab-designer"  role="tab"><span class="tab-num">02</span>Designer</label>
+    <label for="tab-backend"   role="tab"><span class="tab-num">03</span>Backend Engineer</label>
+    <label for="tab-backend-en" role="tab"><span class="tab-num">04</span>Backend Engineer <span class="tab-lang">EN</span></label>
+    <label for="tab-ios"       role="tab"><span class="tab-num">05</span>Senior iOS + Tech PM</label>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ====================== TAB 01 · PM ====================== -->
+  <article class="tab-panel" data-tab="pm" role="tabpanel" aria-labelledby="tab-pm">
+    <div class="panel-wrap">
+      <header class="panel-hero">
+        <span class="panel-eyebrow">Feature 01 · For PM Participants</span>
+        <h1 class="panel-title">Product Manager — 產品經理</h1>
+        <p class="panel-lede">
+          研究關注 PRD 的撰寫者腦中假設了哪些讀者、為哪些段落保留了什麼、又有意或無意省略了什麼。PM 的視角是本研究的核心切入點。
+        </p>
+        <dl class="panel-meta">
+          <div><dt>Duration</dt><dd>60–75 min</dd></div>
+          <div><dt>Language</dt><dd>中文(可切換英文)</dd></div>
+          <div><dt>Format</dt><dd>Semi-structured</dd></div>
+          <div><dt>Location</dt><dd>Online or in person</dd></div>
+        </dl>
+      </header>
+
+      <!-- Consent form (first section) -->
+      <details class="consent-block" data-consent="zh" open></details>
+
+      <section class="section" id="pm-s1">
+        <span class="section-anchor">Section 1</span>
+        <h2><span class="num">1.</span> 研究背景與目的</h2>
+        <p>PRD(Product Requirements Document)是跨功能團隊在日常產品開發中最頻繁依賴的核心文件之一,同時承擔需求說明、跨角色合約、規格依據、會議錨點等多重功能。然而,作為一份「需要同時被不同角色閱讀、解讀、轉化」的文件,PRD 在實務中經常出現幾種反覆發生的現象:</p>
+        <ul>
+          <li>同一份文件被不同角色讀出不同重點,事後才發現理解落差</li>
+          <li>寫得太細反而稀釋重點,寫得太模糊又容易造成重工或上線後問題</li>
+          <li>PRD 作為跨角色協作的起點,於實作過程中被轉譯為多份派生文件(Figma、Tech Spec、工單、Test Case 等);如何維繫從起點到實作端的一致性,是值得探討的議題</li>
+        </ul>
+        <p>本研究希望透過實務工作者的第一手經驗,理解 PRD 在真實工作流程中如何被撰寫、閱讀、轉譯,並辨識哪些溝通痛點反覆出現、哪些已有有效的因應方式、哪些可能適合以工具或 AI 介入。研究成果將構成 King's College London MSc 學位論文的核心資料,並可能延伸為後續學術發表或工具設計提案。</p>
+      </section>
+
+      <section class="section" id="pm-s2">
+        <span class="section-anchor">Section 2</span>
+        <h2><span class="num">2.</span> 為什麼邀請 PM 參與</h2>
+        <p>一份 PRD 在組織中通常由「產出端」與「接收端」共同建構,其中<strong>產出端</strong>指 PRD 的撰寫者,多為產品經理(PM);<strong>接收端</strong>則指 PRD 的下游讀者與執行者,包含設計師、工程師、QA、Data Analyst 等。</p>
+        <blockquote>「文件被寫出來時,作者腦中假設了哪些讀者、為哪些段落保留了什麼、又有意或無意省略了什麼。」</blockquote>
+        <p>由於研究者本身的職涯方向亦將往 PM 邁進,且產品開發流程在實務上多以 PM 發想需求為起點,本研究遂以 <strong>PM 視角作為核心切入點</strong>,希望從上述這個源頭出發,理解 PRD 在後續流轉中所遇到的各種現象。PM 受訪者的第一手經驗(包括撰寫策略、判斷標準、與下游角色之間的溝通方式),構成本研究最關鍵的核心資料。</p>
+      </section>
+
+      <section class="section" id="pm-s3">
+        <span class="section-anchor">Section 3</span>
+        <h2><span class="num">3.</span> 訪談基本資訊</h2>
+        <table>
+          <thead><tr><th>項目</th><th>說明</th></tr></thead>
+          <tbody>
+            <tr><td>時長</td><td>60–75 分鐘(可依受訪者方便調整)</td></tr>
+            <tr><td>形式</td><td>半結構式訪談,以幾個大方向為骨幹,沿著受訪者實際回答動態調整</td></tr>
+            <tr><td>地點</td><td>線上(Zoom / Meet / Teams)或實體皆可</td></tr>
+            <tr><td>錄音</td><td>取得口頭同意後錄音,僅供逐字稿轉錄與分析;資料保密與使用細節請見 Participant Information Sheet</td></tr>
+            <tr><td>語言</td><td>中文為主(必要時可切換英文)</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section" id="pm-s4">
+        <span class="section-anchor">Section 4</span>
+        <h2><span class="num">4.</span> 訪談開場的暖身</h2>
+        <p>正式進入主題之前,會請受訪者簡短分享以下兩個面向,作為訪談的脈絡背景(約 5 分鐘):</p>
+        <ol>
+          <li><strong>受訪者背景</strong>:目前服務的公司或產業類型、現在的職位,以及在這個職位上的年資</li>
+          <li><strong>團隊的產品開發流程</strong>:目前團隊做產品時大致的工作流程長什麼樣子</li>
+        </ol>
+      </section>
+
+      <section class="section" id="pm-s5">
+        <span class="section-anchor">Section 5</span>
+        <h2><span class="num">5.</span> 訪談會涵蓋的兩個方向</h2>
+        <blockquote>以下是<strong>主題方向</strong>,並非逐題清單。訪談過程不會照順序問完;當某一個回答已順帶涵蓋下一個問題時,便會直接跳過。</blockquote>
+
+        <h3>5.1 PRD 的撰寫流程(佔比最重,約 25–30 分鐘)</h3>
+        <p>訪談的核心,將請受訪者<strong>帶領研究者走過最近一次撰寫 PRD 的完整過程</strong>,包括從接到需求、決定撰寫策略、到交付給設計與工程的整段流程。越具體越好,例如:</p>
+        <ul>
+          <li>撰寫過程中會開啟哪些檔案?哪些步驟最容易卡關?</li>
+          <li>哪些內容會<strong>明確寫進 PRD</strong>?哪些則「靠團隊默契」、「會議口頭補充」、「預期讀者會自行補上」?</li>
+          <li>如何判斷一段「<strong>寫得夠了</strong>」、可以送出?心中是否有一份隱性的 checklist?</li>
+          <li>為「工程師讀者」與「設計師讀者」所寫的段落,撰寫策略是否有意識地區分?</li>
+        </ul>
+
+        <h3>5.2 痛點、現行因應方式、工具與 AI 的角色</h3>
+        <ul>
+          <li>跨角色溝通中,最常<strong>重複出現</strong>的問題是什麼?</li>
+          <li>是否曾遇過「PRD 寫得模糊、導致返工、重工、衝突或延期」的經驗?這個落差後來是如何被補起來的?</li>
+          <li>PRD 中所載的「預期效益/指標」於上線後<strong>由誰追蹤、由誰回報</strong>?這些報告是否會回流到 PRD?這類「跨角色責任歸屬」是否曾構成痛點?</li>
+          <li>團隊發展出哪些自己的解法?哪些確實有效、哪些其實只是「形式上要做」?</li>
+          <li>在 PRD 相關工作中是否曾使用 AI 工具?用於哪一段流程?(若無相關使用經驗亦完全可以,可直接告知,該段將略過)</li>
+          <li>若想像有一個工具專門協助「<strong>閱讀 PRD 的人</strong>」(而非撰寫者)解決上述痛點,<strong>理想中應該長什麼樣、最不應該做什麼</strong>?</li>
+        </ul>
+      </section>
+
+      <section class="section" id="pm-s6">
+        <span class="section-anchor">Section 6</span>
+        <h2><span class="num">6.</span> 收尾將詢問的三件事</h2>
+        <ol>
+          <li>今天未談到、但對本研究主題重要的事?</li>
+          <li>是否願意分享一份<strong>匿名化</strong>的 PRD 供文件分析?(收到後將再進行一次去識別化處理)</li>
+          <li>是否有適合作為下一位受訪者的同事可推薦?(PM、Designer、Engineer、QA、DA 皆可)</li>
+        </ol>
+      </section>
+
+      <section class="section" id="pm-s7">
+        <span class="section-anchor">Section 7</span>
+        <h2><span class="num">7.</span> 訪談形式上的提醒</h2>
+        <ul>
+          <li><strong>沒有標準答案</strong>。本研究關心的是真實工作經驗,負面經驗、抱怨、未完成的想法都是珍貴資料,無須包裝。</li>
+          <li>訪談中可<strong>隨時拒答</strong>任何問題,或要求暫停/中止訪談。</li>
+          <li>若某段內容<strong>用畫的比用講的更清楚</strong>(流程圖、組織關係、文件對應⋯),訪談現場備有紙筆與白板可隨時使用。</li>
+          <li>若方便,建議於訪談時開啟<strong>一份最近撰寫過的 PRD</strong> 作為回憶錨點,不一定要分享給研究者,能讓「最近一次撰寫 PRD」這段描述更具體即可。</li>
+          <li>訪談結束後 30 天內可撤回資料,無須說明理由。</li>
+        </ul>
+      </section>
+
+      <section class="section" id="pm-s8">
+        <span class="section-anchor">Section 8 · Optional</span>
+        <h2><span class="num">8.</span> 第二階段(可選)</h2>
+        <p>第一階段資料整理出共同模式後,研究將提出一個改善方案,並再邀請受訪者進行一次回饋訪談(約 45–60 分鐘)。是否參與第二階段可待第一階段結束後再決定。</p>
+      </section>
+
+      <p class="callout">如對本文件或訪談範圍有任何疑問或希望事前釐清的事項,歡迎直接回覆訊息。<strong>誠摯感謝撥冗參與。</strong></p>
+    </div>
+  </article>
+
+  <!-- ====================== TAB 02 · Designer ====================== -->
+  <article class="tab-panel" data-tab="designer" role="tabpanel" aria-labelledby="tab-designer">
+    <div class="panel-wrap">
+      <header class="panel-hero">
+        <span class="panel-eyebrow">Feature 02 · For Designer Participants</span>
+        <h1 class="panel-title">Designer — 設計師</h1>
+        <p class="panel-lede">
+          設計師同時是 PRD 的閱讀者,又是 Figma、design spec 等派生文件的產出者;在跨角色翻譯鏈中位於極為特殊的位置。
+        </p>
+        <dl class="panel-meta">
+          <div><dt>Duration</dt><dd>60–75 min</dd></div>
+          <div><dt>Language</dt><dd>中文(可切換英文)</dd></div>
+          <div><dt>Format</dt><dd>Semi-structured</dd></div>
+          <div><dt>Location</dt><dd>Online or in person</dd></div>
+        </dl>
+      </header>
+
+      <details class="consent-block" data-consent="zh" open></details>
+
+      <section class="section">
+        <span class="section-anchor">Section 1</span>
+        <h2><span class="num">1.</span> 研究背景與目的</h2>
+        <p>PRD(Product Requirements Document)是跨功能團隊在日常產品開發中最頻繁依賴的核心文件之一,同時承擔需求說明、跨角色合約、規格依據、會議錨點等多重功能。然而,作為一份「需要同時被不同角色閱讀、解讀、轉化」的文件,PRD 在實務中經常出現幾種反覆發生的現象:</p>
+        <ul>
+          <li>同一份文件被不同角色讀出不同重點,事後才發現理解落差</li>
+          <li>寫得太細反而稀釋重點,寫得太模糊又容易造成重工或上線後問題</li>
+          <li>PRD 作為跨角色協作的起點,於實作過程中被轉譯為多份派生文件(Figma、Tech Spec、工單、Test Case 等);如何維繫從起點到實作端的一致性,是值得探討的議題</li>
+        </ul>
+        <p>本研究希望透過實務工作者的第一手經驗,理解 PRD 在真實工作流程中如何被撰寫、閱讀、轉譯,並辨識哪些溝通痛點反覆出現、哪些已有有效的因應方式、哪些可能適合以工具或 AI 介入。</p>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 2</span>
+        <h2><span class="num">2.</span> 為什麼邀請 Designer 參與</h2>
+        <p>一份 PRD 在組織中通常由「產出端」與「接收端」共同建構,其中<strong>產出端</strong>指 PRD 的撰寫者,多為產品經理(PM);<strong>接收端</strong>則指 PRD 的下游讀者與執行者,包含設計師、工程師、QA、Data Analyst 等。</p>
+        <blockquote>「PM 單方面難以還原的隱性知識,設計師都必須自己補上 — 這是本研究最重要的觀察對象之一。」</blockquote>
+        <p>設計師的視角揭示了當一份 PRD 被讀進來時,讀者實際接收到的是什麼、PRD 中哪些段落最常缺漏、又有哪些是設計師必須「靠經驗自己補進去」的隱性知識。</p>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 3</span>
+        <h2><span class="num">3.</span> 訪談基本資訊</h2>
+        <table>
+          <thead><tr><th>項目</th><th>說明</th></tr></thead>
+          <tbody>
+            <tr><td>時長</td><td>60–75 分鐘(可依受訪者方便調整)</td></tr>
+            <tr><td>形式</td><td>半結構式訪談,以幾個大方向為骨幹,沿著受訪者實際回答動態調整</td></tr>
+            <tr><td>地點</td><td>線上(Zoom / Meet / Teams)或實體皆可</td></tr>
+            <tr><td>錄音</td><td>取得口頭同意後錄音,僅供逐字稿轉錄與分析</td></tr>
+            <tr><td>語言</td><td>中文為主(必要時可切換英文)</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 4</span>
+        <h2><span class="num">4.</span> 訪談開場的暖身</h2>
+        <p>正式進入主題之前,會請受訪者簡短分享以下兩個面向,作為訪談的脈絡背景(約 5 分鐘):</p>
+        <ol>
+          <li><strong>受訪者背景</strong>:目前服務的公司或產業類型、現在的職位,以及在這個職位上的年資</li>
+          <li><strong>團隊的產品開發流程</strong>:目前團隊做產品時大致的工作流程長什麼樣子</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 5</span>
+        <h2><span class="num">5.</span> 訪談會涵蓋的兩個方向</h2>
+        <blockquote>以下是<strong>主題方向</strong>,並非逐題清單。訪談過程不會照順序問完;當某一個回答已順帶涵蓋下一個問題時,便會直接跳過。</blockquote>
+
+        <h3>5.1 PRD 的閱讀流程與 design spec 的產出(佔比最重,約 25–30 分鐘)</h3>
+        <p>訪談的核心,將請受訪者<strong>帶領研究者走過最近一次拿到 PRD 之後的完整工作流程</strong>,包括從打開 PRD、到產出 design spec / wireframe / Figma 的整段過程。越具體越好,例如:</p>
+        <ul>
+          <li>拿到 PRD 的<strong>第一個動作</strong>是什麼?從頭讀?跳特定段落?先找人問?</li>
+          <li>哪一個步驟最容易卡關?是想不清楚、找不到資訊、還是 PRD 並未寫明?</li>
+          <li>PRD 上<strong>沒寫、卻必須自行補進去</strong>的內容通常是什麼?(行為動機、情境、品牌調性、互動細節⋯)</li>
+          <li>哪些段落會<strong>主動跳過</strong>?跳過後是否曾後悔?</li>
+          <li>閱讀 PRD 時會<strong>同時打開</strong>哪些其他文件或工具?(之前的 PRD、design system、使用者研究、Slack 對話⋯)</li>
+          <li>如何判斷「<strong>已經讀懂、可以開始畫</strong>」?心中是否有一份隱性的 checklist?</li>
+          <li>接收到的 PRD 是<strong>文字為主還是圖文並陳</strong>?兩者哪一種較易處理?為什麼?</li>
+          <li>PRD 中是否存在「<strong>不太懂、但通常也不會主動詢問</strong>」的部分?背後的原因是什麼?</li>
+        </ul>
+
+        <h3>5.2 痛點、現行因應方式、工具與 AI 的角色</h3>
+        <ul>
+          <li>跨角色溝通中,最常<strong>重複出現</strong>的問題是什麼?哪些誤解「文件再怎麼寫也救不了」?</li>
+          <li>是否曾遇過「PRD 寫得模糊、導致返工、重工、衝突或延期」的經驗?這個落差後來是如何被補起來的?</li>
+          <li>反過來,PRD 中是否存在哪些模糊<strong>樂於</strong>自行詮釋的段落?背後的理由是什麼?</li>
+          <li>團隊發展出哪些自己的解法?哪些確實有效、哪些其實只是「形式上要做」?</li>
+          <li>在 PRD 相關工作中是否曾使用 AI 工具?用於哪一段流程?(若無相關使用經驗亦完全可以)</li>
+          <li>若想像有一個工具專門協助「<strong>閱讀 PRD 的人</strong>」(而非撰寫者)解決上述痛點,<strong>理想中應該長什麼樣、最不應該做什麼</strong>?</li>
+          <li>PRD、Figma、Test Case 最終需被整合成「真正在依賴的東西」時,這項整合工作<strong>應該由誰來做</strong>?PM?AI?工程師自己?</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 6</span>
+        <h2><span class="num">6.</span> 收尾將詢問的三件事</h2>
+        <ol>
+          <li>今天未談到、但對本研究主題重要的事?</li>
+          <li>是否願意分享一份<strong>匿名化</strong>的 PRD(或對應的 Figma spec)供文件分析?(收到後將再進行一次去識別化處理)</li>
+          <li>是否有適合作為下一位受訪者的同事可推薦?(PM、Designer、Engineer、QA、DA 皆可)</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 7</span>
+        <h2><span class="num">7.</span> 訪談形式上的提醒</h2>
+        <ul>
+          <li><strong>沒有標準答案</strong>。本研究關心的是真實工作經驗,負面經驗、抱怨、未完成的想法都是珍貴資料,無須包裝。</li>
+          <li>訪談中可<strong>隨時拒答</strong>任何問題,或要求暫停/中止訪談。</li>
+          <li>若某段內容<strong>用畫的比用講的更清楚</strong>(流程圖、文件對應、Figma 結構⋯),訪談現場備有紙筆與白板可隨時使用。</li>
+          <li>若方便,建議於訪談時開啟<strong>一份最近處理過的 PRD 與對應 Figma</strong> 作為回憶錨點,不一定要分享給研究者,能讓「最近一次的工作流程」這段描述更具體即可。</li>
+          <li>訪談結束後 30 天內可撤回資料,無須說明理由。</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 8 · Optional</span>
+        <h2><span class="num">8.</span> 第二階段(可選)</h2>
+        <p>第一階段資料整理出共同模式後,研究將提出一個改善方案,並再邀請受訪者進行一次回饋訪談(約 45–60 分鐘)。是否參與第二階段可待第一階段結束後再決定。</p>
+      </section>
+
+      <p class="callout">如對本文件或訪談範圍有任何疑問或希望事前釐清的事項,歡迎直接回覆訊息。<strong>誠摯感謝撥冗參與。</strong></p>
+    </div>
+  </article>
+
+  <!-- ====================== TAB 03 · Backend (CN) ====================== -->
+  <article class="tab-panel" data-tab="backend" role="tabpanel" aria-labelledby="tab-backend">
+    <div class="panel-wrap">
+      <header class="panel-hero">
+        <span class="panel-eyebrow">Feature 03 · For Backend Engineer Participants</span>
+        <h1 class="panel-title">Backend Engineer — 後端工程師</h1>
+        <p class="panel-lede">
+          後端工程師的視角能讓研究者看見:當一份 PRD 進入實作端後,設計意圖如何轉化為 code、runtime config 與部署版本三者疊加的真實系統行為。
+        </p>
+        <dl class="panel-meta">
+          <div><dt>Duration</dt><dd>60–75 min</dd></div>
+          <div><dt>Language</dt><dd>中文(可切換英文)</dd></div>
+          <div><dt>Format</dt><dd>Semi-structured</dd></div>
+          <div><dt>Location</dt><dd>Online or in person</dd></div>
+        </dl>
+      </header>
+
+      <details class="consent-block" data-consent="zh" open></details>
+
+      <section class="section">
+        <span class="section-anchor">Section 1</span>
+        <h2><span class="num">1.</span> 研究背景與目的</h2>
+        <p>PRD(Product Requirements Document)是跨功能團隊在日常產品開發中最頻繁依賴的核心文件之一,同時承擔需求說明、跨角色合約、規格依據、會議錨點等多重功能。然而,作為一份「需要同時被不同角色閱讀、解讀、轉化」的文件,PRD 在實務中經常出現幾種反覆發生的現象:</p>
+        <ul>
+          <li>同一份文件被不同角色讀出不同重點,事後才發現理解落差</li>
+          <li>寫得太細反而稀釋重點,寫得太模糊又容易造成重工或上線後問題</li>
+          <li>PRD 作為跨角色協作的起點,於實作過程中被轉譯為多份派生文件(Figma、Tech Spec、工單、Test Case 等)</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 2</span>
+        <h2><span class="num">2.</span> 為什麼邀請 Backend Engineer 參與</h2>
+        <p>一份 PRD 在組織中通常由「產出端」與「接收端」共同建構。工程師這個角色在實務上涵蓋前端與後端兩種工作型態,兩者面對 PRD 的方式、與其他角色協作的接面都有所不同。</p>
+        <blockquote>「設計意圖如何轉化為 code、runtime config 與部署版本三者疊加的真實系統行為。」</blockquote>
+        <p>後端工程師的視角能讓研究者看見上述這個轉化過程。另外,後端工作經常需要跟其他團隊共用 API、處理 schema 變動,這些跨團隊協作的場景裡 PM 無法感知,所以會發生 PRD 上的描述場景無法被實行,而這些情況也是本研究想深入了解的部分。</p>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 3</span>
+        <h2><span class="num">3.</span> 訪談基本資訊</h2>
+        <table>
+          <thead><tr><th>項目</th><th>說明</th></tr></thead>
+          <tbody>
+            <tr><td>時長</td><td>60–75 分鐘(可依受訪者方便調整)</td></tr>
+            <tr><td>形式</td><td>半結構式訪談</td></tr>
+            <tr><td>地點</td><td>線上(Zoom / Meet / Teams)或實體皆可</td></tr>
+            <tr><td>錄音</td><td>取得口頭同意後錄音,僅供逐字稿轉錄與分析</td></tr>
+            <tr><td>語言</td><td>中文為主(必要時可切換英文)</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 4</span>
+        <h2><span class="num">4.</span> 訪談開場的暖身</h2>
+        <p>正式進入主題之前,會請受訪者簡短分享以下兩個面向(約 5 分鐘):</p>
+        <ol>
+          <li><strong>受訪者背景</strong>:目前服務的公司或產業類型、現在的職位,以及在這個職位上的年資</li>
+          <li><strong>團隊的產品開發流程</strong>:目前團隊做產品時大致的工作流程長什麼樣子</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 5</span>
+        <h2><span class="num">5.</span> 訪談會涵蓋的三個方向</h2>
+        <blockquote>以下是<strong>主題方向</strong>,並非逐題清單。對 Backend 而言,第 1 與第 3 部分將會花費較多時間。</blockquote>
+
+        <h3>5.1 PRD 的閱讀流程與後續產出(約 20–25 分鐘)</h3>
+        <p>訪談的核心,將請受訪者<strong>帶領研究者走過最近一次拿到 PRD 之後的完整工作流程</strong>,包括從打開 PRD、到拆出工單/寫完 tech spec、開始實作的整段過程。越具體越好,例如:</p>
+        <ul>
+          <li>拿到 PRD 的<strong>第一個動作</strong>是什麼?從頭讀?直接跳到 acceptance criteria?先找人問?</li>
+          <li>哪一個步驟最容易卡關?</li>
+          <li>PRD 上<strong>沒寫、卻必須自行決定</strong>的內容通常是什麼?(資料結構、錯誤碼、API 介面、非功能需求⋯)</li>
+          <li>哪些段落會<strong>主動跳過</strong>?跳過後是否曾後悔?</li>
+          <li>如何判斷「<strong>已經讀懂、可以開始拆工單與估時</strong>」?心中是否有一份隱性的 checklist?</li>
+          <li>PRD 通常會被翻譯成什麼產出?(user story、tech spec、工單、流程圖、ER diagram)這個翻譯是一個人完成、還是團隊共同進行?</li>
+          <li>PRD 中是否存在「<strong>不太懂、但通常也不會主動詢問</strong>」的部分?背後的原因是什麼?</li>
+          <li>從一份 PRD 到實際開始 coding 之間,會產生<strong>幾份「中間文件」</strong>?這些文件的關係是什麼?哪一份是真正在依賴的?</li>
+          <li>當<strong>不同文件之間出現矛盾</strong>時,會以<strong>哪一份為準</strong>?背後的判斷邏輯是什麼?</li>
+          <li>在後端/分散式系統的脈絡下,「系統現在實際在跑什麼」的真正答案,在於 <strong>code base</strong> 本身,還是 <strong>code + runtime config(env var / feature flag)+ 當下部署的 version</strong> 三者合一?</li>
+        </ul>
+
+        <h3>5.2 痛點、現行因應方式、工具與 AI 的角色</h3>
+        <ul>
+          <li>跨角色溝通中,最常<strong>重複出現</strong>的問題是什麼?哪些誤解「文件再怎麼寫也救不了」?</li>
+          <li>是否曾遇過「PRD 寫得模糊、導致返工、重工、衝突或延期」的經驗?這個落差後來是如何被補起來的?</li>
+          <li>印象中<strong>最棘手的 edge case</strong>:根源是「業務邏輯本身複雜」,還是「分岔到別人團隊的 scope」?這類痛點如何被治理?</li>
+          <li>團隊發展出哪些自己的解法?哪些確實有效、哪些其實只是「形式上要做」?</li>
+          <li>在 PRD 相關工作中是否曾使用 AI 工具?用於哪一段流程?(若無相關使用經驗亦完全可以)</li>
+          <li>若想像有一個工具專門協助「<strong>閱讀 PRD 的人</strong>」(而非撰寫者)解決上述痛點,<strong>理想中應該長什麼樣、最不應該做什麼</strong>?</li>
+          <li>PRD、Figma、Test Case 最終需被整合成「<strong>工程師真正在依賴的東西</strong>」時,這項整合工作<strong>應該由誰來做</strong>?PM?AI?工程師自己?</li>
+        </ul>
+
+        <h3>5.3 開發後流程與品質把關(Backend 的重點段落)</h3>
+        <ul>
+          <li><strong>Code review / PR 流程</strong>:完成 coding 到合入 main branch 之間發生了什麼?code review 是否會挑出「與 PRD 不一致」之處,或僅關注技術品質?</li>
+          <li><strong>部署 / 上線</strong>:feature 通過 QA 後如何上線?全量?灰度?feature flag?每日平均部署幾次?rollback 在哪些條件下會被觸發?</li>
+          <li><strong>上線後監測</strong>:如何確認 feature 真的依照預期運作?PRD 中所載指標<strong>由誰追蹤、由誰回報</strong>?這些報告是否會回流到 PRD?</li>
+          <li><strong>Incident response</strong>:是否有上線後出 incident 的經驗?事後的 postmortem 是否會回頭影響 PRD 的寫法?</li>
+          <li><strong>跨團隊 API(本研究對 Backend 的重點段落)</strong>:
+            <ul>
+              <li>與其他 team 共用的 API 規範寫在哪裡?與 PRD 是同一份還是另一份?</li>
+              <li>對方 team 變更 API 而未通知、造成自家系統受影響,這類事件多久發生一次?團隊如何避免?</li>
+              <li>Schema migration、dependency 升級這類「跨團隊變動」的協調流程是什麼?</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 6</span>
+        <h2><span class="num">6.</span> 收尾將詢問的三件事</h2>
+        <ol>
+          <li>今天未談到、但對本研究主題重要的事?</li>
+          <li>是否願意分享一份<strong>匿名化</strong>的 PRD(或對應的 tech spec / API doc)供文件分析?</li>
+          <li>是否有適合作為下一位受訪者的同事可推薦?</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 7</span>
+        <h2><span class="num">7.</span> 訪談形式上的提醒</h2>
+        <ul>
+          <li><strong>沒有標準答案</strong>。本研究關心的是真實工作經驗。</li>
+          <li>訪談中可<strong>隨時拒答</strong>任何問題,或要求暫停/中止訪談。</li>
+          <li>若某段內容<strong>用畫的比用講的更清楚</strong>(系統圖、文件對應、API 依賴⋯),訪談現場備有紙筆與白板。</li>
+          <li>若方便,建議於訪談時開啟<strong>一份最近處理過的 PRD 與對應的 tech spec / 工單</strong>作為回憶錨點。</li>
+          <li>訪談結束後 30 天內可撤回資料,無須說明理由。</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 8 · Optional</span>
+        <h2><span class="num">8.</span> 第二階段(可選)</h2>
+        <p>第一階段資料整理出共同模式後,研究將提出一個改善方案,並再邀請受訪者進行一次回饋訪談(約 45–60 分鐘)。是否參與第二階段可待第一階段結束後再決定。</p>
+      </section>
+
+      <p class="callout">如對本文件或訪談範圍有任何疑問或希望事前釐清的事項,歡迎直接回覆訊息。<strong>誠摯感謝撥冗參與。</strong></p>
+    </div>
+  </article>
+
+  <!-- ====================== TAB 04 · Backend (EN) ====================== -->
+  <article class="tab-panel" data-tab="backend-en" role="tabpanel" aria-labelledby="tab-backend-en">
+    <div class="panel-wrap">
+      <header class="panel-hero">
+        <span class="panel-eyebrow">Feature 04 · For Backend Engineer Participants · English</span>
+        <h1 class="panel-title">Backend Engineer (English)</h1>
+        <p class="panel-lede">
+          The backend engineer's perspective shows how design intent becomes the actual system behaviour layered into code, runtime configuration, and the deployed version.
+        </p>
+        <dl class="panel-meta">
+          <div><dt>Duration</dt><dd>60–75 min</dd></div>
+          <div><dt>Language</dt><dd>Primarily Mandarin (switch to English as useful)</dd></div>
+          <div><dt>Format</dt><dd>Semi-structured</dd></div>
+          <div><dt>Location</dt><dd>Online or in person</dd></div>
+        </dl>
+      </header>
+
+      <details class="consent-block" data-consent="en" open></details>
+
+      <section class="section">
+        <span class="section-anchor">Section 1</span>
+        <h2><span class="num">1.</span> Research Background and Aim</h2>
+        <p>The Product Requirements Document (PRD) is one of the most frequently relied-upon documents in day-to-day cross-functional product development. As a document that is "read, interpreted, and transformed by different roles at the same time", PRDs in practice repeatedly produce several recognisable patterns:</p>
+        <ul>
+          <li>The same document is read differently by different roles, with discrepancies in understanding only surfacing later</li>
+          <li>Writing in too much detail dilutes the key points, while writing too ambiguously causes rework or post-launch issues</li>
+          <li>As the starting point of cross-role collaboration, a PRD is translated during implementation into multiple derivative documents (Figma, Tech Spec, tickets, Test Cases, etc.)</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 2</span>
+        <h2><span class="num">2.</span> Why Backend Engineers Are Invited</h2>
+        <p>A PRD is typically co-constructed by a "producing side" (the writer, usually the PM) and a "receiving side" (downstream readers and executors, including designers, engineers, QA, and Data Analysts).</p>
+        <blockquote>"How design intent becomes the actual system behaviour layered into code, runtime configuration, and the deployed version."</blockquote>
+        <p>The backend engineer's perspective offers a view of this transformation. In addition, backend work frequently involves sharing APIs across teams and handling schema changes — situations where the PM often lacks visibility, and where scenarios described in the PRD cannot actually be carried out.</p>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 3</span>
+        <h2><span class="num">3.</span> Practical Information</h2>
+        <table>
+          <thead><tr><th>Item</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Duration</td><td>60–75 minutes (flexible)</td></tr>
+            <tr><td>Format</td><td>Semi-structured interview</td></tr>
+            <tr><td>Location</td><td>Online (Zoom / Meet / Teams) or in person</td></tr>
+            <tr><td>Recording</td><td>With verbal consent, audio-recorded for transcription and analysis only</td></tr>
+            <tr><td>Language</td><td>Primarily Mandarin, switching to English where useful</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 4</span>
+        <h2><span class="num">4.</span> Warm-Up at the Start of the Interview</h2>
+        <p>Before moving into the main topics, the participant will be invited to briefly share (about 5 minutes):</p>
+        <ol>
+          <li><strong>Participant background</strong>: current company or industry, current position, and time in this position</li>
+          <li><strong>Team's product development flow</strong>: roughly what the team's day-to-day workflow looks like</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 5</span>
+        <h2><span class="num">5.</span> The Three Topic Areas</h2>
+        <blockquote>The items below are <strong>topic directions</strong>, not a list of questions to be asked one by one. For backend participants, sections 5.1 and 5.3 will take the most time.</blockquote>
+
+        <h3>5.1 Reading the PRD and the downstream artefacts produced from it (~20–25 min)</h3>
+        <ul>
+          <li>What is the <strong>first action</strong> taken upon receiving a PRD? Read top to bottom? Jump straight to the acceptance criteria? Find someone to ask first?</li>
+          <li>Which step tends to get most stuck?</li>
+          <li>What kinds of content are <strong>not written in the PRD but have to be decided independently</strong>?</li>
+          <li>Which sections are <strong>deliberately skipped</strong>? Has skipping them ever caused regret?</li>
+          <li>How is the threshold of "understood enough to break down tickets and estimate work" judged?</li>
+          <li>What artefacts does a PRD typically get translated into? Is the translation done individually, or as a team?</li>
+          <li>Are there parts of the PRD that are "<strong>not really understood, but usually not asked about either</strong>"?</li>
+          <li>Between receiving a PRD and starting to write code, how many "intermediate documents" are typically produced? Which one is actually relied on?</li>
+          <li>When <strong>different documents contradict each other</strong>, which one is treated as authoritative?</li>
+          <li>In a backend / distributed systems context, where is the real answer to "what is the system actually doing right now"? In the code base, or in code + runtime config + the version currently deployed taken together?</li>
+        </ul>
+
+        <h3>5.2 Pain points, current coping strategies, the role of tools and AI</h3>
+        <ul>
+          <li>What is the issue that <strong>recurs most often</strong> in cross-role communication?</li>
+          <li>Has there ever been an experience where "an ambiguous PRD led to rework, conflict, or delay"? How was that gap filled?</li>
+          <li>The most difficult <strong>edge case</strong> ever encountered: did it come from genuinely complex business logic, or from spilling into another team's scope?</li>
+          <li>What workarounds has the team developed? Which actually work, and which are only "done for form's sake"?</li>
+          <li>Have any AI tools been used in PRD-related work? (No experience is fine — the topic can simply be skipped.)</li>
+          <li>Imagine a tool dedicated to helping the <strong>readers of PRDs</strong> (rather than the writers): what should it ideally look like, and what should it definitely not do?</li>
+          <li>When PRDs, Figma, and Test Cases need to be integrated into "what engineers actually rely on", who should do that integration work?</li>
+        </ul>
+
+        <h3>5.3 Post-implementation flow and quality control (the key section for backend)</h3>
+        <ul>
+          <li><strong>Code review / PR flow</strong>: What happens between finishing coding and merging to main? Does code review surface inconsistencies with the PRD, or only focus on technical quality?</li>
+          <li><strong>Deployment / release</strong>: Once a feature passes QA, how does it go live? Full rollout? Gradual? Feature flag? Under what conditions is a rollback triggered?</li>
+          <li><strong>Post-launch monitoring</strong>: How is it confirmed that the feature is actually behaving as expected? Who tracks the metrics specified in the PRD?</li>
+          <li><strong>Incident response</strong>: Do post-mortems ever feed back into how PRDs are written?</li>
+          <li><strong>Cross-team APIs</strong>:
+            <ul>
+              <li>Where are the API specifications shared with other teams documented? Same PRD or separate?</li>
+              <li>How often does another team change an API without notice? How does the team try to prevent this?</li>
+              <li>What is the coordination process for "cross-team changes" such as schema migrations and dependency upgrades?</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 6</span>
+        <h2><span class="num">6.</span> The Three Things Asked at the End</h2>
+        <ol>
+          <li>Anything not covered today that feels important for this research topic?</li>
+          <li>Would there be willingness to share an <strong>anonymised</strong> PRD (or accompanying tech spec / API doc) for document analysis?</li>
+          <li>Are there colleagues who might be suitable as the next interviewees?</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 7</span>
+        <h2><span class="num">7.</span> A Few Notes on Interview Format</h2>
+        <ul>
+          <li><strong>There is no right answer.</strong> Negative experiences, complaints, and unfinished thoughts are all valuable material; no polishing is needed.</li>
+          <li>Any question can be <strong>declined at any time</strong>; the interview can be paused or stopped at any point.</li>
+          <li>If something is <strong>clearer to draw than to describe</strong>, pen and paper or a whiteboard will be available on the spot.</li>
+          <li>If convenient, having <strong>a recently worked-on PRD and its accompanying tech spec / tickets</strong> open during the interview is useful as a memory anchor.</li>
+          <li>Data can be withdrawn within 30 days of the interview, without giving a reason.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 8 · Optional</span>
+        <h2><span class="num">8.</span> Phase Two (Optional)</h2>
+        <p>After common patterns are identified from the first phase, a proposed improvement will be developed, and participants will be invited back for one feedback interview (about 45–60 minutes). Whether to participate in the second phase can be decided after the first-phase interview is complete.</p>
+      </section>
+
+      <p class="callout">For any questions about this document, or anything that would be useful to clarify in advance, please feel free to reply. <strong>Many thanks for taking the time.</strong></p>
+    </div>
+  </article>
+
+  <!-- ====================== TAB 05 · iOS + Tech PM ====================== -->
+  <article class="tab-panel" data-tab="ios" role="tabpanel" aria-labelledby="tab-ios">
+    <div class="panel-wrap">
+      <header class="panel-hero">
+        <span class="panel-eyebrow">Feature 05 · For Senior iOS + Tech PM Participants</span>
+        <h1 class="panel-title">Senior iOS Engineer + Tech PM</h1>
+        <p class="panel-lede">
+          同時兼任工程師與 Tech PM 兩種身分的受訪者是極為珍貴的觀察對象 — 能直接描述在不同情境下從接收端切換到產出端時思考方式的差異。
+        </p>
+        <dl class="panel-meta">
+          <div><dt>Duration</dt><dd>60–75 min</dd></div>
+          <div><dt>Language</dt><dd>中文(可切換英文)</dd></div>
+          <div><dt>Format</dt><dd>Semi-structured</dd></div>
+          <div><dt>Role split</dt><dd>iOS RD 70% / Tech PM 30%</dd></div>
+          <div><dt>Location</dt><dd>Online or in person</dd></div>
+        </dl>
+      </header>
+
+      <details class="consent-block" data-consent="zh" open></details>
+
+      <section class="section">
+        <span class="section-anchor">Section 1</span>
+        <h2><span class="num">1.</span> 研究背景與目的</h2>
+        <p>PRD(Product Requirements Document)是跨功能團隊在日常產品開發中最頻繁依賴的核心文件之一。然而,作為一份「需要同時被不同角色閱讀、解讀、轉化」的文件,PRD 在實務中經常出現幾種反覆發生的現象:</p>
+        <ul>
+          <li>同一份文件被不同角色讀出不同重點,事後才發現理解落差</li>
+          <li>寫得太細反而稀釋重點,寫得太模糊又容易造成重工或上線後問題</li>
+          <li>PRD 作為跨角色協作的起點,於實作過程中被轉譯為多份派生文件</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 2</span>
+        <h2><span class="num">2.</span> 為什麼邀請此身份的受訪者</h2>
+        <p>對本研究而言,<strong>同時兼任工程師與 Tech PM 兩種身分的受訪者</strong>是極為珍貴的觀察對象,原因有二:</p>
+        <ol>
+          <li><strong>同一個人具備跨角色的內在視角</strong>。純 PM 或純 RD 的訪談只能各自呈現單面視角,而兼具兩種身分的受訪者,能直接描述從接收端切換到產出端時思考方式的差異。</li>
+          <li><strong>iOS(mobile)平台的特殊性</strong>。派生文件鏈(常以 Figma 為核心)、上線流程(App Store 審查、舊版相容)、SSOT 結構(code + App Store 上線版本 + remote config / feature flag)都有其獨特之處。</li>
+        </ol>
+        <p>考量到受訪者的工作時間配比約為 iOS 工程師 70%、Tech PM 30%,訪談內容也會大致對應這個比例:<strong>iOS RD 視角佔最大比重,Tech PM 視角為第二主軸</strong>,最後再進入痛點與 iOS 開發後流程。</p>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 3</span>
+        <h2><span class="num">3.</span> 訪談基本資訊</h2>
+        <table>
+          <thead><tr><th>項目</th><th>說明</th></tr></thead>
+          <tbody>
+            <tr><td>時長</td><td>60–75 分鐘(可依受訪者方便調整)</td></tr>
+            <tr><td>形式</td><td>半結構式訪談</td></tr>
+            <tr><td>地點</td><td>線上(Zoom / Meet / Teams)或實體皆可</td></tr>
+            <tr><td>錄音</td><td>取得口頭同意後錄音,僅供逐字稿轉錄與分析</td></tr>
+            <tr><td>語言</td><td>中文為主(必要時可切換英文)</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 4</span>
+        <h2><span class="num">4.</span> 訪談開場的暖身</h2>
+        <p>正式進入主題之前,會請受訪者簡短分享以下兩個面向(約 5 分鐘):</p>
+        <ol>
+          <li><strong>受訪者背景</strong>:目前服務的公司或產業類型、現在的職位(含 iOS RD 與 Tech PM 兩種身分的實際分工),以及在這個職位上的年資</li>
+          <li><strong>團隊的產品開發流程</strong>:目前團隊做產品時大致的工作流程長什麼樣子</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 5</span>
+        <h2><span class="num">5.</span> 訪談會涵蓋的四個方向</h2>
+        <blockquote>身分配比為 iOS RD 約 70%、Tech PM 約 30%,訪談時間分配也大致按此比例規劃。</blockquote>
+
+        <h3>5.1 iOS RD 視角:PRD 的閱讀流程與後續產出(佔比最重,約 20–25 分鐘)</h3>
+        <p>請受訪者先以 <strong>iOS 工程師身分</strong>,帶領研究者走過最近一次拿到 PRD 之後的完整工作流程:</p>
+        <ul>
+          <li>拿到 PRD 的<strong>第一個動作</strong>是什麼?從頭讀?直接跳到 acceptance criteria?先找人問?</li>
+          <li>哪一個步驟最容易卡關?</li>
+          <li>PRD 上<strong>沒寫、卻必須自行決定</strong>的內容通常是什麼?</li>
+          <li>哪些段落會<strong>主動跳過</strong>?跳過後是否曾後悔?</li>
+          <li>如何判斷「<strong>已經讀懂、可以開始拆工單與估時</strong>」?</li>
+          <li>PRD 通常會被翻譯成什麼產出?這個翻譯是一個人完成、還是團隊共同進行?</li>
+          <li>PRD 中是否存在「<strong>不太懂、但通常也不會主動詢問</strong>」的部分?</li>
+          <li>在 iOS 開發脈絡下,派生文件常以 Figma 為核心;從一份 PRD 到實際開始 coding 之間,會產生<strong>幾份「中間文件」</strong>?哪一份是真正在依賴的?</li>
+          <li>當<strong>不同文件之間出現矛盾</strong>時,會以<strong>哪一份為準</strong>?</li>
+          <li>在 mobile 端,「<strong>系統現在實際在跑什麼</strong>」的真正答案,在於 <strong>code base</strong> 本身,還是 <strong>code + 當前 App Store 上線版本(含使用者裝置上仍在跑的舊版本)+ remote config / feature flag + iOS 版本/機型相容性</strong> 多者合一?</li>
+        </ul>
+
+        <h3>5.2 Tech PM 視角:PRD 的撰寫與跨角色協作(約 10–15 分鐘)</h3>
+        <ul>
+          <li>在什麼情境下,工作角色會從 iOS 工程師切換為 Tech PM?兩種角色在思考方式、決策節奏上的差異是什麼?</li>
+          <li>以 Tech PM 身分撰寫 PRD 時,會打開哪些檔案?哪些步驟最容易卡關?</li>
+          <li>哪些內容會<strong>明確寫進 PRD</strong>?哪些則「靠團隊默契」、「會議口頭補充」、「預期讀者會自行補上」?</li>
+          <li>特別是本身具有 iOS 工程背景,在寫給工程師看時是否會更具體、或者更敢於省略?</li>
+          <li>同時擁有工程師與 PM 兩種身分,撰寫 PRD 時是否會與「純 PM 視角」做出不同的取捨?這些取捨後來證明是優勢還是限制?</li>
+          <li>是否曾經以 Tech PM 身分撰寫 PRD、再以 iOS RD 身分接收同一份 PRD(或反之)?這種「自我接收」的經驗帶來什麼啟發?</li>
+        </ul>
+
+        <h3>5.3 痛點、現行因應方式、工具與 AI 的角色</h3>
+        <ul>
+          <li>跨角色溝通中,最常<strong>重複出現</strong>的問題是什麼?</li>
+          <li>是否曾遇過「PRD 寫得模糊、導致返工、衝突或延期」的經驗?</li>
+          <li>印象中<strong>最棘手的 edge case</strong>:根源是業務邏輯本身複雜,還是分岔到別人團隊的 scope?</li>
+          <li>團隊發展出哪些自己的解法?哪些確實有效、哪些其實只是「形式上要做」?</li>
+          <li>在 PRD 相關工作中是否曾使用 AI 工具?(包含以 RD 身分讀 PRD、與以 Tech PM 身分寫 PRD 兩種使用情境)</li>
+          <li>若想像有一個工具專門協助「<strong>閱讀 PRD 的人</strong>」,理想中應該長什麼樣、最不應該做什麼?</li>
+          <li>PRD、Figma、Test Case 最終需被整合成「工程師真正在依賴的東西」時,這項整合工作應該由誰來做?</li>
+        </ul>
+
+        <h3>5.4 iOS 開發後流程與品質把關(mobile 特有議題)</h3>
+        <ul>
+          <li><strong>Code review / PR 流程</strong>:code review 是否會挑出與 PRD 不一致之處?iOS 端是否有特定的 review 或 CI tooling(Bitrise、Fastlane lane 設計等)?</li>
+          <li><strong>上線流程</strong>:TestFlight beta?phased release?是否使用 server-side feature flag / remote config 控制新功能露出?App Store 審查時間如何納入專案排程?</li>
+          <li><strong>舊版相容性</strong>:團隊的 iOS deployment target 是哪個版本?deprecated API、舊版用戶 crash 處理流程是什麼?</li>
+          <li><strong>上線後監測</strong>:crash rate、adoption rate、事件追蹤由誰設計、由誰追蹤?</li>
+          <li><strong>Incident response</strong>:hotfix 需要 App Store 加速審查時的協調流程是什麼?postmortem 是否會回頭影響 PRD?</li>
+          <li><strong>跨團隊/跨平台協作</strong>:iOS 與 backend、Android、web 之間共用的 API 規範寫在哪裡?同一個 feature 在 iOS、Android、web 之間實作上有差異時,如何被討論並記錄?</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 6</span>
+        <h2><span class="num">6.</span> 收尾將詢問的三件事</h2>
+        <ol>
+          <li>今天未談到、但對本研究主題重要的事?</li>
+          <li>是否願意分享一份<strong>匿名化</strong>的 PRD(或對應的 tech spec / Figma spec / 工單)供文件分析?</li>
+          <li>是否有適合作為下一位受訪者的同事可推薦?</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 7</span>
+        <h2><span class="num">7.</span> 訪談形式上的提醒</h2>
+        <ul>
+          <li><strong>沒有標準答案</strong>。負面經驗、抱怨、未完成的想法都是珍貴資料。</li>
+          <li>訪談中可<strong>隨時拒答</strong>任何問題,或要求暫停/中止訪談。</li>
+          <li>若某段內容用畫的比用講的更清楚(系統圖、版本相容矩陣、文件對應⋯),訪談現場備有紙筆與白板。</li>
+          <li>若方便,建議於訪談時開啟<strong>一份近期處理過的 PRD,以及對應的 tech spec / Figma / 工單</strong>作為回憶錨點;Tech PM 身分撰寫過的 PRD 若有近期作品亦歡迎一併參考。</li>
+          <li>訪談結束後 30 天內可撤回資料,無須說明理由。</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 8 · Optional</span>
+        <h2><span class="num">8.</span> 第二階段(可選)</h2>
+        <p>第一階段資料整理出共同模式後,研究將提出一個改善方案,並再邀請受訪者進行一次回饋訪談(約 45–60 分鐘)。是否參與第二階段可待第一階段結束後再決定。</p>
+      </section>
+
+      <p class="callout">如對本文件或訪談範圍有任何疑問或希望事前釐清的事項,歡迎直接回覆訊息。<strong>誠摯感謝撥冗參與。</strong></p>
+    </div>
+  </article>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <span>PRD as Boundary Object · Phase One Interview Previews · 2026</span>
+    <span>Wang Wei · King's College London · MSc MTC</span>
+  </div>
+</footer>
+
+<!-- =============================================================
+     Consent form templates (cloned into each tab on page load)
+     ============================================================= -->
+
+<template id="tmpl-consent-zh">
+  <summary>
+    <span>受訪者同意書 · 開始閱讀訪綱前請先確認(中文版)</span>
+    <span class="consent-block-summary-meta">v1.0 · 2026-05-14</span>
+  </summary>
+  <div class="consent-body">
+    <p class="callout notice-warn">⚠️ 本中文版<strong>僅供受訪者閱讀理解之輔助</strong>。正式提交 KCL Research Ethics Office 的版本以英文版為準。受訪者亦可選擇簽署英文版。</p>
+
+    <h3>研究資訊</h3>
+    <table>
+      <tbody>
+        <tr><td><strong>研究題目</strong></td><td>跨功能產品開發中 PRD(產品需求文件)作為 Boundary Object 之研究</td></tr>
+        <tr><td><strong>研究者</strong></td><td>王 葳(學號:AG08404)</td></tr>
+        <tr><td><strong>就讀課程</strong></td><td>MSc Management &amp; Technological Change</td></tr>
+        <tr><td><strong>就讀機構</strong></td><td>King's College London(倫敦國王學院)</td></tr>
+        <tr><td><strong>指導教授</strong></td><td>[教授姓名]</td></tr>
+        <tr><td><strong>研究者聯絡信箱</strong></td><td>[email]</td></tr>
+        <tr><td><strong>倫理審查編號</strong></td><td>待 MRA 通過後填入</td></tr>
+      </tbody>
+    </table>
+
+    <h3>簽署前須知</h3>
+    <p>請您在簽署本同意書前,仔細閱讀附件的 <strong>《受訪者資訊頁》(Participant Information Sheet v1.0,日期 2026-05-14)</strong>。如有任何疑問,請於簽署前聯繫研究者。</p>
+
+    <h3>同意條款</h3>
+    <p>請於每一項末端的方框中<strong>填入姓名首字縮寫</strong>以表示同意。若您不同意某一<strong>選填</strong>項目,可留白;不影響您參與本研究的權利。</p>
+
+    <ol class="consent-statements">
+      <li><span>我確認已閱讀並理解《受訪者資訊頁 v1.0,日期 2026-05-14》。我已有機會詢問與本研究相關的問題,並已得到滿意的答覆。</span><span class="check"></span></li>
+      <li><span>我理解我的參與是<strong>自願</strong>的,可在任何時候<strong>無需理由</strong>退出研究,且不會因此承擔任何負面後果。</span><span class="check"></span></li>
+      <li><span>我理解我可以在<strong>訪談日後 30 天內</strong>撤回我的資料。超過此期限,我的資料可能已完成匿名化並納入分析,將難以單獨移除。</span><span class="check"></span></li>
+      <li><span>我同意訪談過程<strong>錄音</strong>,作為逐字稿轉錄與分析之用。</span><span class="check"></span></li>
+      <li><span>我同意錄音檔將<strong>逐字轉錄</strong>為文字稿。逐字稿將進行<strong>匿名化</strong>處理。</span><span class="check"></span></li>
+      <li><span>我理解所有可辨識的資訊 — 包含姓名、任職公司名稱、產品名稱、同事、客戶以及其他個人或商業識別細節 — 將於逐字稿、分析筆記、與最終論文中<strong>全面匿名化</strong>。</span><span class="check"></span></li>
+      <li><span>我同意我訪談中的<strong>匿名化引用</strong>可用於:(a)研究者的 MSc 論文;(b)相關學術出版物;(c)學術會議發表。</span><span class="check"></span></li>
+      <li><span>我理解錄音檔與逐字稿將儲存於<strong>加密、密碼保護的裝置與雲端</strong>。錄音檔將於論文繳交後 <strong>12 個月內刪除</strong>;匿名化的逐字稿依 KCL 規範可保存最多 <strong>7 年</strong>。</span><span class="check"></span></li>
+      <li><span><strong>(選填)</strong> 我同意提供一份<strong>匿名化後的 PRD</strong>(或部分節選)供文件分析使用。我確認此舉<strong>不違反</strong>我與任職公司之間的保密或保密協議(NDA)義務。</span><span class="check"></span></li>
+      <li><span><strong>(選填)</strong> 我願意在後續被聯繫,參與<strong>第二階段追蹤訪談</strong>(約 45–60 分鐘),就第一階段歸納出的改善方案給予回饋。屆時我仍可選擇是否參與。</span><span class="check"></span></li>
+      <li><span>我理解我在 <strong>英國 Data Protection Act 2018</strong> 與 <strong>UK GDPR</strong> 下的個人資料權利,包含存取、更正、刪除個人資料的權利(受撤回期限限制)。</span><span class="check"></span></li>
+      <li><span>我理解我可以<strong>主動向研究者索取</strong>研究結果摘要。</span><span class="check"></span></li>
+      <li><span>我<strong>同意參與</strong>本研究。</span><span class="check"></span></li>
+    </ol>
+
+    <h3>簽署欄</h3>
+    <div class="consent-sign">
+      <div>
+        <h4>受訪者</h4>
+        <p>姓名(正楷)</p>
+        <p>簽名</p>
+        <p>日期(YYYY-MM-DD)</p>
+      </div>
+      <div>
+        <h4>研究者(取得同意人)</h4>
+        <p>姓名:王 葳</p>
+        <p>簽名</p>
+        <p>日期(YYYY-MM-DD)</p>
+      </div>
+    </div>
+
+    <h3>聯絡資訊</h3>
+    <p>若您有任何疑問、顧慮,或想於日後撤回您的資料,請聯繫:</p>
+    <ul>
+      <li><strong>研究者:</strong>王 葳 — [email]</li>
+      <li><strong>指導教授:</strong>[姓名] — [email]</li>
+      <li><strong>KCL 研究倫理辦公室:</strong>research-ethics@kcl.ac.uk</li>
+      <li><strong>KCL 資料保護長:</strong>info-compliance@kcl.ac.uk</li>
+    </ul>
+
+    <p><strong>副本</strong> · 本同意書應簽署兩份:受訪者保留一份,研究者保留一份。</p>
+
+    <a href="#pm-s1" class="skip-link">Skip to interview preview ↓</a>
+  </div>
+</template>
+
+<template id="tmpl-consent-en">
+  <summary>
+    <span>Participant Consent Form · Please review before reading the interview preview (English)</span>
+    <span class="consent-block-summary-meta">v1.0 · 2026-05-14</span>
+  </summary>
+  <div class="consent-body">
+    <h3>Study Information</h3>
+    <table>
+      <tbody>
+        <tr><td><strong>Study Title</strong></td><td>Understanding Product Requirements Documents (PRDs) as Boundary Objects in Cross-Functional Product Development</td></tr>
+        <tr><td><strong>Researcher</strong></td><td>Wang Wei (Student ID: AG08404)</td></tr>
+        <tr><td><strong>Programme</strong></td><td>MSc Management &amp; Technological Change</td></tr>
+        <tr><td><strong>Institution</strong></td><td>King's College London</td></tr>
+        <tr><td><strong>Supervisor</strong></td><td>[Supervisor name]</td></tr>
+        <tr><td><strong>Researcher email</strong></td><td>[email]</td></tr>
+        <tr><td><strong>Ethics Approval Ref.</strong></td><td>To be inserted after MRA approval</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Before You Sign</h3>
+    <p>Please read the accompanying <strong>Participant Information Sheet (PIS) v1.0 (dated 2026-05-14)</strong> carefully before completing this form. If you have any questions, please contact the researcher before signing.</p>
+
+    <h3>Statements of Consent</h3>
+    <p>Please initial each box to confirm your agreement. If you do not agree with an optional item, leave it blank — this does not prevent you from taking part in the study.</p>
+
+    <ol class="consent-statements">
+      <li><span>I confirm that I have read and understood the <strong>Participant Information Sheet v1.0 dated 2026-05-14</strong>. I have had the opportunity to ask questions about the study, and they have been answered satisfactorily.</span><span class="check"></span></li>
+      <li><span>I understand that my participation is <strong>voluntary</strong> and that I am free to withdraw at any time, without giving any reason, and without any negative consequences.</span><span class="check"></span></li>
+      <li><span>I understand that I may withdraw my data <strong>up to 30 days after my interview date</strong>. After this point, my data may already be anonymised and integrated into analysis and may not be removable.</span><span class="check"></span></li>
+      <li><span>I consent to the interview being <strong>audio-recorded</strong> for the purpose of accurate transcription and analysis.</span><span class="check"></span></li>
+      <li><span>I consent to the audio recording being <strong>transcribed verbatim</strong>. The transcript will be <strong>anonymised</strong>.</span><span class="check"></span></li>
+      <li><span>I understand that all identifying information — my name, my employer's name, product names, colleagues, clients, and any other personally or commercially identifying details — will be <strong>anonymised</strong> in transcripts, analysis notes, and the final dissertation.</span><span class="check"></span></li>
+      <li><span>I agree that <strong>anonymised quotes</strong> from my interview may be used in: (a) the researcher's MSc dissertation; (b) related academic publications; and (c) conference presentations.</span><span class="check"></span></li>
+      <li><span>I understand that audio recordings and transcripts will be stored on <strong>encrypted, password-protected devices and cloud storage</strong>. Audio recordings will be deleted within <strong>12 months</strong> of dissertation submission. Anonymised transcripts may be retained for up to <strong>7 years</strong> in line with KCL policy.</span><span class="check"></span></li>
+      <li><span><strong>(Optional)</strong> I agree to share an <strong>anonymised copy of a PRD</strong> (or excerpts of one) for document analysis. I confirm that doing so does not violate my employer's confidentiality or non-disclosure obligations.</span><span class="check"></span></li>
+      <li><span><strong>(Optional)</strong> I am willing to be contacted for a <strong>second-phase follow-up interview</strong> (approximately 45–60 minutes) at a later stage to provide feedback on a proposed solution.</span><span class="check"></span></li>
+      <li><span>I understand my rights under the <strong>UK Data Protection Act 2018</strong> and the <strong>UK GDPR</strong>, including the right to access, rectify, or delete my personal data (subject to the withdrawal deadline above).</span><span class="check"></span></li>
+      <li><span>I understand that a summary of the research findings will be made available to me <strong>on request</strong>.</span><span class="check"></span></li>
+      <li><span>I <strong>agree to take part</strong> in the above study.</span><span class="check"></span></li>
+    </ol>
+
+    <h3>Signatures</h3>
+    <div class="consent-sign">
+      <div>
+        <h4>Participant</h4>
+        <p>Name (printed)</p>
+        <p>Signature</p>
+        <p>Date (YYYY-MM-DD)</p>
+      </div>
+      <div>
+        <h4>Researcher (taking consent)</h4>
+        <p>Name: Wang Wei</p>
+        <p>Signature</p>
+        <p>Date (YYYY-MM-DD)</p>
+      </div>
+    </div>
+
+    <h3>Contact</h3>
+    <p>If you have any questions, concerns, or wish to withdraw your data at any time, please contact:</p>
+    <ul>
+      <li><strong>Researcher:</strong> Wang Wei — [email]</li>
+      <li><strong>Supervisor:</strong> [name] — [email]</li>
+      <li><strong>KCL Research Ethics Office:</strong> research-ethics@kcl.ac.uk</li>
+      <li><strong>KCL Data Protection Officer:</strong> info-compliance@kcl.ac.uk</li>
+    </ul>
+
+    <p><strong>Copies</strong> · Two copies of this Consent Form should be signed: one retained by the participant, one retained by the researcher.</p>
+
+    <a href="#" class="skip-link">Skip to interview preview ↓</a>
+  </div>
+</template>
+
+<script>
+// Clone the consent templates into each tab's consent placeholder
+(function () {
+  function fillFrom(templateId, attrValue) {
+    var tmpl = document.getElementById(templateId);
+    if (!tmpl) return;
+    document.querySelectorAll('details.consent-block[data-consent="' + attrValue + '"]').forEach(function (el) {
+      el.appendChild(tmpl.content.cloneNode(true));
+    });
+  }
+  fillFrom('tmpl-consent-zh', 'zh');
+  fillFrom('tmpl-consent-en', 'en');
+})();
+</script>
+
+</body>
+</html>
