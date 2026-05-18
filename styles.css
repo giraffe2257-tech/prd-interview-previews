@@ -15,6 +15,12 @@
   --accent-soft: #EFF2FB;
   --highlight: #FFF5C2;
 
+  /* Per-role accent palette — muted, academic */
+  --role-pm:        #1E40AF;  --role-pm-soft:        #EFF2FB;
+  --role-designer:  #7E3F65;  --role-designer-soft:  #F5EBF1;
+  --role-backend:   #166534;  --role-backend-soft:   #E9F4ED;
+  --role-ios:       #B45309;  --role-ios-soft:       #FDF1DC;
+
   --sans: 'IBM Plex Sans', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --sans-cn: 'Noto Sans TC', 'IBM Plex Sans', -apple-system, system-ui, sans-serif;
   --mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
@@ -22,6 +28,12 @@
   --measure: 68ch;
   --max-page: 980px;
 }
+
+/* Scope role accent inside each panel via data-role */
+.tab-panel[data-role="pm"]       { --accent: var(--role-pm);       --accent-soft: var(--role-pm-soft); }
+.tab-panel[data-role="designer"] { --accent: var(--role-designer); --accent-soft: var(--role-designer-soft); }
+.tab-panel[data-role="backend"]  { --accent: var(--role-backend);  --accent-soft: var(--role-backend-soft); }
+.tab-panel[data-role="ios"]      { --accent: var(--role-ios);      --accent-soft: var(--role-ios-soft); }
 
 * { box-sizing: border-box; }
 
@@ -221,20 +233,16 @@ a:hover { background: var(--accent-soft); }
   color: var(--ink);
 }
 
-/* active role tab */
-#role-pm:checked       ~ .tab-nav label[for="role-pm"],
-#role-designer:checked ~ .tab-nav label[for="role-designer"],
-#role-backend:checked  ~ .tab-nav label[for="role-backend"],
-#role-ios:checked      ~ .tab-nav label[for="role-ios"] {
-  color: var(--ink);
-  border-bottom-color: var(--accent);
-}
-#role-pm:checked       ~ .tab-nav label[for="role-pm"] .tab-num,
-#role-designer:checked ~ .tab-nav label[for="role-designer"] .tab-num,
-#role-backend:checked  ~ .tab-nav label[for="role-backend"] .tab-num,
-#role-ios:checked      ~ .tab-nav label[for="role-ios"] .tab-num {
-  color: var(--accent);
-}
+/* active role tab — each role uses its own accent on the underline & number */
+#role-pm:checked       ~ .tab-nav label[for="role-pm"]       { color: var(--ink); border-bottom-color: var(--role-pm); }
+#role-designer:checked ~ .tab-nav label[for="role-designer"] { color: var(--ink); border-bottom-color: var(--role-designer); }
+#role-backend:checked  ~ .tab-nav label[for="role-backend"]  { color: var(--ink); border-bottom-color: var(--role-backend); }
+#role-ios:checked      ~ .tab-nav label[for="role-ios"]      { color: var(--ink); border-bottom-color: var(--role-ios); }
+
+#role-pm:checked       ~ .tab-nav label[for="role-pm"]       .tab-num { color: var(--role-pm); }
+#role-designer:checked ~ .tab-nav label[for="role-designer"] .tab-num { color: var(--role-designer); }
+#role-backend:checked  ~ .tab-nav label[for="role-backend"]  .tab-num { color: var(--role-backend); }
+#role-ios:checked      ~ .tab-nav label[for="role-ios"]      .tab-num { color: var(--role-ios); }
 
 /* active language */
 #lang-cn:checked ~ .tab-nav .lang-switch label[for="lang-cn"],
