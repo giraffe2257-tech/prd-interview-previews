@@ -247,18 +247,22 @@ a:hover { background: var(--accent-soft); }
 #lang-cn:checked ~ * .lang-en { display: none; }
 #lang-en:checked ~ * .lang-cn { display: none; }
 
-/* show / hide panels — visible iff matching role AND matching language */
+/* show / hide panels — two-pass:
+   1) show all panels matching the current language
+   2) hide panels NOT matching the current role
+   Net effect: only the (role × lang) panel remains visible. */
 .tab-panel { display: none; }
 
-#lang-cn:checked ~ #role-pm:checked       ~ main .tab-panel[data-role="pm"][data-lang="cn"],
-#lang-cn:checked ~ #role-designer:checked ~ main .tab-panel[data-role="designer"][data-lang="cn"],
-#lang-cn:checked ~ #role-backend:checked  ~ main .tab-panel[data-role="backend"][data-lang="cn"],
-#lang-cn:checked ~ #role-ios:checked      ~ main .tab-panel[data-role="ios"][data-lang="cn"],
-#lang-en:checked ~ #role-pm:checked       ~ main .tab-panel[data-role="pm"][data-lang="en"],
-#lang-en:checked ~ #role-designer:checked ~ main .tab-panel[data-role="designer"][data-lang="en"],
-#lang-en:checked ~ #role-backend:checked  ~ main .tab-panel[data-role="backend"][data-lang="en"],
-#lang-en:checked ~ #role-ios:checked      ~ main .tab-panel[data-role="ios"][data-lang="en"] {
+#lang-cn:checked ~ main .tab-panel[data-lang="cn"],
+#lang-en:checked ~ main .tab-panel[data-lang="en"] {
   display: block;
+}
+
+#role-pm:checked       ~ main .tab-panel:not([data-role="pm"]),
+#role-designer:checked ~ main .tab-panel:not([data-role="designer"]),
+#role-backend:checked  ~ main .tab-panel:not([data-role="backend"]),
+#role-ios:checked      ~ main .tab-panel:not([data-role="ios"]) {
+  display: none;
 }
 
 /* =====================  MAIN PANELS  ===================== */
