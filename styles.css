@@ -123,7 +123,7 @@ a:hover { background: var(--accent-soft); }
   font-size: 16px;
   line-height: 1.7;
   color: var(--ink-soft);
-  max-width: 60ch;
+  max-width: none;
   margin: 0 0 36px;
 }
 
@@ -265,7 +265,7 @@ a:hover { background: var(--accent-soft); }
   font-size: 16px;
   line-height: 1.7;
   color: var(--ink-soft);
-  max-width: 60ch;
+  max-width: none;
   margin: 0 0 28px;
 }
 
