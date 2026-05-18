@@ -12,12 +12,15 @@
 </head>
 <body>
 
-<!-- Tab radios (must be siblings of .tab-nav and main for CSS to work) -->
-<input type="radio" name="tab" id="tab-pm" class="tab-radio" checked>
-<input type="radio" name="tab" id="tab-designer" class="tab-radio">
-<input type="radio" name="tab" id="tab-backend" class="tab-radio">
-<input type="radio" name="tab" id="tab-backend-en" class="tab-radio">
-<input type="radio" name="tab" id="tab-ios" class="tab-radio">
+<!-- Language radios (must precede role radios, both siblings of .tab-nav and main) -->
+<input type="radio" name="lang" id="lang-cn" class="lang-radio" checked>
+<input type="radio" name="lang" id="lang-en" class="lang-radio">
+
+<!-- Role radios -->
+<input type="radio" name="role" id="role-pm" class="role-radio" checked>
+<input type="radio" name="role" id="role-designer" class="role-radio">
+<input type="radio" name="role" id="role-backend" class="role-radio">
+<input type="radio" name="role" id="role-ios" class="role-radio">
 
 <header class="site-header">
   <div class="site-header-inner">
@@ -34,24 +37,28 @@
   <span class="hero-eyebrow">Research Study · Phase One Interview Previews</span>
   <h2 class="hero-title">PRD as a Boundary Object in Cross-Functional Teams</h2>
   <p class="hero-deck">
-    本頁集合給五位受訪者的訪談預覽文件。請於下方選擇對應您身份的分頁,作為正式訪談前的脈絡熱身。<strong>無須事前準備答案,亦無須事前回覆任何題目</strong>。任何疑問請直接回覆訊息。
+    <span class="lang-cn">本頁集合給五位受訪者的訪談預覽文件。請於下方選擇對應您身份的分頁,作為正式訪談前的脈絡熱身。<strong>無須事前準備答案,亦無須事前回覆任何題目</strong>。任何疑問請直接回覆訊息。</span>
+    <span class="lang-en">This page collects interview preview documents for the five participants. Please select the tab matching your role below — it serves as a contextual warm-up before the formal interview. <strong>There is no need to prepare answers in advance, nor to reply to any of the questions beforehand.</strong> Feel free to reply directly with any questions.</span>
   </p>
 </section>
 
 <nav class="tab-nav" aria-label="Role selector">
   <div class="tab-nav-inner" role="tablist">
-    <label for="tab-pm"        role="tab"><span class="tab-num">01</span>Product Manager</label>
-    <label for="tab-designer"  role="tab"><span class="tab-num">02</span>Designer</label>
-    <label for="tab-backend"   role="tab"><span class="tab-num">03</span>Backend Engineer</label>
-    <label for="tab-backend-en" role="tab"><span class="tab-num">04</span>Backend Engineer <span class="tab-lang">EN</span></label>
-    <label for="tab-ios"       role="tab"><span class="tab-num">05</span>Senior iOS + Tech PM</label>
+    <label for="role-pm"        role="tab"><span class="tab-num">01</span><span class="lang-cn">產品經理</span><span class="lang-en">Product Manager</span></label>
+    <label for="role-designer"  role="tab"><span class="tab-num">02</span><span class="lang-cn">設計師</span><span class="lang-en">Designer</span></label>
+    <label for="role-backend"   role="tab"><span class="tab-num">03</span><span class="lang-cn">後端工程師</span><span class="lang-en">Backend Engineer</span></label>
+    <label for="role-ios"       role="tab"><span class="tab-num">04</span><span class="lang-cn">資深 iOS + Tech PM</span><span class="lang-en">Senior iOS + Tech PM</span></label>
+    <div class="lang-switch" role="group" aria-label="Language switch">
+      <label for="lang-cn">中</label>
+      <label for="lang-en">EN</label>
+    </div>
   </div>
 </nav>
 
 <main>
 
-  <!-- ====================== TAB 01 · PM ====================== -->
-  <article class="tab-panel" data-tab="pm" role="tabpanel" aria-labelledby="tab-pm">
+  <!-- ====================== PM · CN ====================== -->
+  <article class="tab-panel" data-role="pm" data-lang="cn" role="tabpanel" aria-labelledby="role-pm">
     <div class="panel-wrap">
       <header class="panel-hero">
         <span class="panel-eyebrow">Feature 01 · For PM Participants</span>
@@ -67,7 +74,7 @@
         </dl>
       </header>
 
-      <section class="section" id="pm-s1">
+      <section class="section">
         <span class="section-anchor">訪綱 · Section 1</span>
         <h2><span class="num">1.</span> 開場暖身</h2>
         <p>正式進入主題之前,會請受訪者簡短分享以下兩個面向(約 5 分鐘):</p>
@@ -77,7 +84,7 @@
         </ol>
       </section>
 
-      <section class="section" id="pm-s2">
+      <section class="section">
         <span class="section-anchor">Section 2</span>
         <h2><span class="num">2.</span> 訪談方向</h2>
         <blockquote>以下是<strong>主題方向</strong>,並非逐題清單。訪談過程不會照順序問完;當某一個回答已順帶涵蓋下一個問題時,便會直接跳過。</blockquote>
@@ -102,7 +109,7 @@
         </ul>
       </section>
 
-      <section class="section" id="pm-s3">
+      <section class="section">
         <span class="section-anchor">Section 3</span>
         <h2><span class="num">3.</span> 收尾三題</h2>
         <ol>
@@ -112,7 +119,7 @@
         </ol>
       </section>
 
-      <section class="section" id="pm-s4">
+      <section class="section">
         <span class="section-anchor">Section 4</span>
         <h2><span class="num">4.</span> 形式提醒</h2>
         <ul>
@@ -124,7 +131,7 @@
         </ul>
       </section>
 
-      <section class="section" id="pm-s5">
+      <section class="section">
         <span class="section-anchor">Section 5 · Optional</span>
         <h2><span class="num">5.</span> 第二階段</h2>
         <p>第一階段資料整理出共同模式後,研究將提出一個改善方案,並再邀請受訪者進行一次回饋訪談(約 45–60 分鐘)。是否參與第二階段可待第一階段結束後再決定。</p>
@@ -134,8 +141,92 @@
     </div>
   </article>
 
-  <!-- ====================== TAB 02 · Designer ====================== -->
-  <article class="tab-panel" data-tab="designer" role="tabpanel" aria-labelledby="tab-designer">
+  <!-- ====================== PM · EN ====================== -->
+  <article class="tab-panel" data-role="pm" data-lang="en" role="tabpanel" aria-labelledby="role-pm">
+    <div class="panel-wrap">
+      <header class="panel-hero">
+        <span class="panel-eyebrow">Feature 01 · For PM Participants</span>
+        <h1 class="panel-title">Product Manager</h1>
+        <p class="panel-lede">
+          The study examines the readers a PRD author silently assumes, what is preserved in each section, and what is intentionally or unintentionally omitted. The PM perspective is the core entry point of this research.
+        </p>
+        <dl class="panel-meta">
+          <div><dt>Duration</dt><dd>60–75 min</dd></div>
+          <div><dt>Language</dt><dd>Primarily Mandarin (switch to English as useful)</dd></div>
+          <div><dt>Format</dt><dd>Semi-structured</dd></div>
+          <div><dt>Location</dt><dd>Online or in person</dd></div>
+        </dl>
+      </header>
+
+      <section class="section">
+        <span class="section-anchor">Interview Guide · Section 1</span>
+        <h2><span class="num">1.</span> Warm-Up</h2>
+        <p>Before moving into the main topics, the participant will be invited to briefly share (about 5 minutes):</p>
+        <ol>
+          <li><strong>Participant background</strong>: current company or industry, current position, and time in this position</li>
+          <li><strong>Team's product development flow</strong>: roughly what the team's day-to-day workflow looks like</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 2</span>
+        <h2><span class="num">2.</span> Topic Areas</h2>
+        <blockquote>The items below are <strong>topic directions</strong>, not a list of questions to be asked one by one. When an answer already covers another question, it will simply be skipped.</blockquote>
+
+        <h3>The PRD writing flow (the largest block, ~25–30 min)</h3>
+        <p>The participant will be invited to <strong>walk the researcher through the most recent PRD they wrote, end to end</strong> — from receiving the requirement, deciding on a writing strategy, to handing off to design and engineering. The more specific the better:</p>
+        <ul>
+          <li>What files are opened during the writing process? Which steps tend to get most stuck?</li>
+          <li>What content is <strong>explicitly written into the PRD</strong>? What is left to "team tacit knowledge", "verbal additions in meetings", or "expected readers will fill in themselves"?</li>
+          <li>How is the threshold of "<strong>enough has been written</strong>" judged? Is there an implicit checklist?</li>
+          <li>For sections aimed at "engineer readers" versus "designer readers", is the writing strategy consciously differentiated?</li>
+        </ul>
+
+        <h3>Pain points, tools, and the role of AI</h3>
+        <ul>
+          <li>What is the issue that <strong>recurs most often</strong> in cross-role communication?</li>
+          <li>Has there ever been an experience where "an ambiguous PRD led to rework, conflict, or delay"? How was that gap later filled?</li>
+          <li>For the "expected outcomes / metrics" stated in a PRD, <strong>who tracks them post-launch, and who reports back</strong>? Do these reports feed back into the PRD? Has this cross-role accountability ever been a pain point?</li>
+          <li>What workarounds has the team developed? Which actually work, and which are only "done for form's sake"?</li>
+          <li>Have any AI tools been used in PRD-related work? Which part of the flow? (No experience is fine — the topic can simply be skipped.)</li>
+          <li>Imagine a tool dedicated to helping the <strong>readers of PRDs</strong> (rather than the writers): what should it ideally look like, and what should it definitely not do?</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 3</span>
+        <h2><span class="num">3.</span> Closing Questions</h2>
+        <ol>
+          <li>Anything not covered today that feels important for this research topic?</li>
+          <li>Would there be willingness to share an <strong>anonymised</strong> PRD for document analysis? (A second de-identification pass will be applied upon receipt.)</li>
+          <li>Are there colleagues who might be suitable as the next interviewees? (PM, Designer, Engineer, QA, DA are all welcome.)</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 4</span>
+        <h2><span class="num">4.</span> Format Notes</h2>
+        <ul>
+          <li><strong>There is no right answer.</strong> The study cares about real working experience — negative experiences, complaints, and unfinished thoughts are all valuable material; no polishing is needed.</li>
+          <li>Any question can be <strong>declined at any time</strong>; the interview can be paused or stopped at any point.</li>
+          <li>If something is <strong>clearer to draw than to describe</strong> (flowcharts, organisational relationships, document mappings…), pen and paper or a whiteboard will be available on the spot.</li>
+          <li>If convenient, having <strong>a recently written PRD</strong> open during the interview is useful as a memory anchor; it does not need to be shared, but it helps make "the most recent PRD I wrote" more concrete.</li>
+          <li>Data can be withdrawn within 30 days of the interview, without giving a reason.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 5 · Optional</span>
+        <h2><span class="num">5.</span> Phase Two</h2>
+        <p>After common patterns are identified from the first phase, a proposed improvement will be developed, and participants will be invited back for one feedback interview (about 45–60 minutes). Whether to participate in the second phase can be decided after the first-phase interview is complete.</p>
+      </section>
+
+      <p class="callout">For any questions about this document, or anything that would be useful to clarify in advance, please feel free to reply. <strong>Many thanks for taking the time.</strong></p>
+    </div>
+  </article>
+
+  <!-- ====================== Designer · CN ====================== -->
+  <article class="tab-panel" data-role="designer" data-lang="cn" role="tabpanel" aria-labelledby="role-designer">
     <div class="panel-wrap">
       <header class="panel-hero">
         <span class="panel-eyebrow">Feature 02 · For Designer Participants</span>
@@ -223,8 +314,97 @@
     </div>
   </article>
 
-  <!-- ====================== TAB 03 · Backend (CN) ====================== -->
-  <article class="tab-panel" data-tab="backend" role="tabpanel" aria-labelledby="tab-backend">
+  <!-- ====================== Designer · EN ====================== -->
+  <article class="tab-panel" data-role="designer" data-lang="en" role="tabpanel" aria-labelledby="role-designer">
+    <div class="panel-wrap">
+      <header class="panel-hero">
+        <span class="panel-eyebrow">Feature 02 · For Designer Participants</span>
+        <h1 class="panel-title">Designer</h1>
+        <p class="panel-lede">
+          Designers are at once readers of PRDs and producers of derivative documents such as Figma and design specs — sitting in a uniquely transitional position within the cross-role translation chain.
+        </p>
+        <dl class="panel-meta">
+          <div><dt>Duration</dt><dd>60–75 min</dd></div>
+          <div><dt>Language</dt><dd>Primarily Mandarin (switch to English as useful)</dd></div>
+          <div><dt>Format</dt><dd>Semi-structured</dd></div>
+          <div><dt>Location</dt><dd>Online or in person</dd></div>
+        </dl>
+      </header>
+
+      <section class="section">
+        <span class="section-anchor">Interview Guide · Section 1</span>
+        <h2><span class="num">1.</span> Warm-Up</h2>
+        <p>Before moving into the main topics, the participant will be invited to briefly share (about 5 minutes):</p>
+        <ol>
+          <li><strong>Participant background</strong>: current company or industry, current position, and time in this position</li>
+          <li><strong>Team's product development flow</strong>: roughly what the team's day-to-day workflow looks like</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 2</span>
+        <h2><span class="num">2.</span> Topic Areas</h2>
+        <blockquote>The items below are <strong>topic directions</strong>, not a list of questions to be asked one by one. When an answer already covers another question, it will simply be skipped.</blockquote>
+
+        <h3>Reading PRDs and producing design specs (the largest block, ~25–30 min)</h3>
+        <p>The participant will be invited to <strong>walk the researcher through the most recent end-to-end workflow after receiving a PRD</strong>, from opening the PRD to producing design specs / wireframes / Figma. The more specific the better:</p>
+        <ul>
+          <li>What is the <strong>first action</strong> taken upon receiving a PRD? Read top to bottom? Jump to specific sections? Find someone to ask first?</li>
+          <li>Which step tends to get most stuck — unclear thinking, missing information, or PRD silence?</li>
+          <li>What content <strong>isn't written in the PRD but has to be filled in independently</strong>? (Behavioural motivation, context, brand tone, interaction details…)</li>
+          <li>Which sections are <strong>deliberately skipped</strong>? Has skipping them ever caused regret?</li>
+          <li>When reading a PRD, what other documents or tools are <strong>opened alongside</strong>? (Past PRDs, design system, user research, Slack threads…)</li>
+          <li>How is "<strong>understood enough to start drawing</strong>" judged? Is there an implicit checklist?</li>
+          <li>Are PRDs received <strong>text-heavy or richly illustrated</strong>? Which is easier to work with? Why?</li>
+          <li>Are there parts of the PRD that are "<strong>not really understood, but usually not asked about either</strong>"? Why?</li>
+        </ul>
+
+        <h3>Pain points, tools, and the role of AI</h3>
+        <ul>
+          <li>What is the issue that <strong>recurs most often</strong> in cross-role communication? Which misunderstandings "no amount of writing can fix"?</li>
+          <li>Has there ever been an experience where "an ambiguous PRD led to rework, conflict, or delay"? How was that gap later filled?</li>
+          <li>Conversely, are there ambiguous sections in a PRD that designers <strong>enjoy</strong> interpreting freely? Why?</li>
+          <li>What workarounds has the team developed? Which actually work, and which are only "done for form's sake"?</li>
+          <li>Have any AI tools been used in PRD-related work? (No experience is fine.)</li>
+          <li>Imagine a tool dedicated to helping the <strong>readers of PRDs</strong> (rather than the writers): what should it ideally look like, and what should it definitely not do?</li>
+          <li>When PRDs, Figma, and Test Cases need to be integrated into "what's actually relied on", <strong>who should do that integration work</strong>? PM? AI? Engineers themselves?</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 3</span>
+        <h2><span class="num">3.</span> Closing Questions</h2>
+        <ol>
+          <li>Anything not covered today that feels important for this research topic?</li>
+          <li>Would there be willingness to share an <strong>anonymised</strong> PRD (or its accompanying Figma spec) for document analysis? (A second de-identification pass will be applied upon receipt.)</li>
+          <li>Are there colleagues who might be suitable as the next interviewees? (PM, Designer, Engineer, QA, DA are all welcome.)</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 4</span>
+        <h2><span class="num">4.</span> Format Notes</h2>
+        <ul>
+          <li><strong>There is no right answer.</strong> The study cares about real working experience — negative experiences, complaints, and unfinished thoughts are all valuable material; no polishing is needed.</li>
+          <li>Any question can be <strong>declined at any time</strong>; the interview can be paused or stopped at any point.</li>
+          <li>If something is <strong>clearer to draw than to describe</strong> (flowcharts, document mappings, Figma structure…), pen and paper or a whiteboard will be available.</li>
+          <li>If convenient, having <strong>a recently worked-on PRD and its accompanying Figma</strong> open during the interview is useful as a memory anchor.</li>
+          <li>Data can be withdrawn within 30 days of the interview, without giving a reason.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 5 · Optional</span>
+        <h2><span class="num">5.</span> Phase Two</h2>
+        <p>After common patterns are identified from the first phase, a proposed improvement will be developed, and participants will be invited back for one feedback interview (about 45–60 minutes). Whether to participate in the second phase can be decided after the first-phase interview is complete.</p>
+      </section>
+
+      <p class="callout">For any questions about this document, or anything that would be useful to clarify in advance, please feel free to reply. <strong>Many thanks for taking the time.</strong></p>
+    </div>
+  </article>
+
+  <!-- ====================== Backend · CN ====================== -->
+  <article class="tab-panel" data-role="backend" data-lang="cn" role="tabpanel" aria-labelledby="role-backend">
     <div class="panel-wrap">
       <header class="panel-hero">
         <span class="panel-eyebrow">Feature 03 · For Backend Engineer Participants</span>
@@ -329,12 +509,12 @@
     </div>
   </article>
 
-  <!-- ====================== TAB 04 · Backend (EN) ====================== -->
-  <article class="tab-panel" data-tab="backend-en" role="tabpanel" aria-labelledby="tab-backend-en">
+  <!-- ====================== Backend · EN ====================== -->
+  <article class="tab-panel" data-role="backend" data-lang="en" role="tabpanel" aria-labelledby="role-backend">
     <div class="panel-wrap">
       <header class="panel-hero">
-        <span class="panel-eyebrow">Feature 04 · For Backend Engineer Participants · English</span>
-        <h1 class="panel-title">Backend Engineer (English)</h1>
+        <span class="panel-eyebrow">Feature 03 · For Backend Engineer Participants</span>
+        <h1 class="panel-title">Backend Engineer</h1>
         <p class="panel-lede">
           The backend engineer's perspective shows how design intent becomes the actual system behaviour layered into code, runtime configuration, and the deployed version.
         </p>
@@ -434,11 +614,11 @@
     </div>
   </article>
 
-  <!-- ====================== TAB 05 · iOS + Tech PM ====================== -->
-  <article class="tab-panel" data-tab="ios" role="tabpanel" aria-labelledby="tab-ios">
+  <!-- ====================== iOS + Tech PM · CN ====================== -->
+  <article class="tab-panel" data-role="ios" data-lang="cn" role="tabpanel" aria-labelledby="role-ios">
     <div class="panel-wrap">
       <header class="panel-hero">
-        <span class="panel-eyebrow">Feature 05 · For Senior iOS + Tech PM Participants</span>
+        <span class="panel-eyebrow">Feature 04 · For Senior iOS + Tech PM Participants</span>
         <h1 class="panel-title">Senior iOS Engineer + Tech PM</h1>
         <p class="panel-lede">
           同時兼任工程師與 Tech PM 兩種身分的受訪者是極為珍貴的觀察對象 — 能直接描述在不同情境下從接收端切換到產出端時思考方式的差異。
@@ -543,6 +723,118 @@
       </section>
 
       <p class="callout">如對本文件或訪談範圍有任何疑問或希望事前釐清的事項,歡迎直接回覆訊息。<strong>誠摯感謝撥冗參與。</strong></p>
+    </div>
+  </article>
+
+  <!-- ====================== iOS + Tech PM · EN ====================== -->
+  <article class="tab-panel" data-role="ios" data-lang="en" role="tabpanel" aria-labelledby="role-ios">
+    <div class="panel-wrap">
+      <header class="panel-hero">
+        <span class="panel-eyebrow">Feature 04 · For Senior iOS + Tech PM Participants</span>
+        <h1 class="panel-title">Senior iOS Engineer + Tech PM</h1>
+        <p class="panel-lede">
+          A participant who simultaneously holds iOS engineer and Tech PM roles is an especially valuable observation subject — able to describe directly how thinking shifts when switching between the receiving side and the producing side.
+        </p>
+        <dl class="panel-meta">
+          <div><dt>Duration</dt><dd>60–75 min</dd></div>
+          <div><dt>Language</dt><dd>Primarily Mandarin (switch to English as useful)</dd></div>
+          <div><dt>Format</dt><dd>Semi-structured</dd></div>
+          <div><dt>Role split</dt><dd>iOS RD 70% / Tech PM 30%</dd></div>
+          <div><dt>Location</dt><dd>Online or in person</dd></div>
+        </dl>
+      </header>
+
+      <section class="section">
+        <span class="section-anchor">Interview Guide · Section 1</span>
+        <h2><span class="num">1.</span> Warm-Up</h2>
+        <p>Before moving into the main topics, the participant will be invited to briefly share (about 5 minutes):</p>
+        <ol>
+          <li><strong>Participant background</strong>: current company or industry, current position (including how time is split between iOS RD and Tech PM responsibilities), and time in this position</li>
+          <li><strong>Team's product development flow</strong>: roughly what the team's day-to-day workflow looks like</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 2</span>
+        <h2><span class="num">2.</span> Topic Areas</h2>
+        <blockquote>The role split is roughly iOS RD 70% / Tech PM 30%, and interview time will be allocated accordingly.</blockquote>
+
+        <h3>iOS RD perspective: reading PRDs and downstream artefacts (the largest block, ~20–25 min)</h3>
+        <p>The participant will first be invited, <strong>as an iOS engineer</strong>, to walk the researcher through the most recent end-to-end workflow after receiving a PRD:</p>
+        <ul>
+          <li>What is the <strong>first action</strong> taken upon receiving a PRD? Read top to bottom? Jump straight to acceptance criteria? Find someone to ask first?</li>
+          <li>Which step tends to get most stuck?</li>
+          <li>What content <strong>isn't written in the PRD but has to be decided independently</strong>?</li>
+          <li>Which sections are <strong>deliberately skipped</strong>? Has skipping them ever caused regret?</li>
+          <li>How is "<strong>understood enough to break down tickets and estimate work</strong>" judged?</li>
+          <li>What artefacts does a PRD typically get translated into? Is the translation done individually, or as a team?</li>
+          <li>Are there parts of the PRD that are "<strong>not really understood, but usually not asked about either</strong>"?</li>
+          <li>In an iOS development context, derivative documents often centre on Figma; between receiving a PRD and starting to write code, how many "intermediate documents" are typically produced? Which one is actually relied on?</li>
+          <li>When <strong>different documents contradict each other</strong>, which one is treated as authoritative?</li>
+          <li>On mobile, where is the real answer to "<strong>what is the system actually doing right now</strong>"? In the code base, or in <strong>code + the current App Store version (including older versions still running on user devices) + remote config / feature flag + iOS version / device compatibility</strong> taken together?</li>
+        </ul>
+
+        <h3>Tech PM perspective: writing PRDs and cross-role collaboration (~10–15 min)</h3>
+        <ul>
+          <li>Under what conditions does the role switch from iOS engineer to Tech PM? What are the differences in thinking and decision-making pace?</li>
+          <li>When writing PRDs as Tech PM, what files are opened? Which steps tend to get most stuck?</li>
+          <li>What content is <strong>explicitly written into the PRD</strong>? What is left to "team tacit knowledge", "verbal additions in meetings", or "expected readers will fill in themselves"?</li>
+          <li>Given an iOS engineering background, does writing for engineers tend to be more concrete, or more comfortable with omission?</li>
+          <li>Holding both engineer and PM identities, do trade-offs in PRD writing differ from a "pure PM perspective"? Did those trade-offs prove to be strengths or limitations?</li>
+          <li>Has there ever been an experience of writing a PRD as Tech PM, then receiving the same PRD as iOS RD (or vice versa)? What insights did this "self-receiving" experience produce?</li>
+        </ul>
+
+        <h3>Pain points, tools, and AI</h3>
+        <ul>
+          <li>What is the issue that <strong>recurs most often</strong> in cross-role communication?</li>
+          <li>Has there ever been an experience where "an ambiguous PRD led to rework, conflict, or delay"?</li>
+          <li>The most difficult <strong>edge case</strong> ever encountered: did it come from genuinely complex business logic, or from spilling into another team's scope?</li>
+          <li>What workarounds has the team developed? Which actually work, and which are only "done for form's sake"?</li>
+          <li>Have any AI tools been used in PRD-related work? (Including reading PRDs as RD, and writing PRDs as Tech PM.)</li>
+          <li>Imagine a tool dedicated to helping the <strong>readers of PRDs</strong>: what should it ideally look like, and what should it definitely not do?</li>
+          <li>When PRDs, Figma, and Test Cases need to be integrated into "what engineers actually rely on", who should do that integration work?</li>
+        </ul>
+
+        <h3>iOS post-implementation flow and quality control (mobile-specific)</h3>
+        <ul>
+          <li><strong>Code review / PR flow</strong>: Does code review surface inconsistencies with the PRD? Does iOS use any specific review or CI tooling (Bitrise, Fastlane lane design, etc.)?</li>
+          <li><strong>Release flow</strong>: TestFlight beta? Phased release? Are server-side feature flags / remote config used to gate new features? How is App Store review time factored into project scheduling?</li>
+          <li><strong>Backwards compatibility</strong>: What is the team's iOS deployment target? What is the workflow for deprecated APIs and crashes on older versions?</li>
+          <li><strong>Post-launch monitoring</strong>: Crash rate, adoption rate, event tracking — who designs and who tracks them?</li>
+          <li><strong>Incident response</strong>: What is the coordination flow when a hotfix needs expedited App Store review? Do post-mortems feed back into how PRDs are written?</li>
+          <li><strong>Cross-team / cross-platform collaboration</strong>: Where are the API specifications shared between iOS, backend, Android, and web documented? When the same feature differs in iOS / Android / web implementations, how is it discussed and recorded?</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 3</span>
+        <h2><span class="num">3.</span> Closing Questions</h2>
+        <ol>
+          <li>Anything not covered today that feels important for this research topic?</li>
+          <li>Would there be willingness to share an <strong>anonymised</strong> PRD (or its accompanying tech spec / Figma spec / tickets) for document analysis?</li>
+          <li>Are there colleagues who might be suitable as the next interviewees?</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 4</span>
+        <h2><span class="num">4.</span> Format Notes</h2>
+        <ul>
+          <li><strong>There is no right answer.</strong> Negative experiences, complaints, and unfinished thoughts are all valuable material.</li>
+          <li>Any question can be <strong>declined at any time</strong>; the interview can be paused or stopped at any point.</li>
+          <li>If something is clearer to draw than to describe (system diagrams, version compatibility matrices, document mappings…), pen and paper or a whiteboard will be available.</li>
+          <li>If convenient, having <strong>a recently handled PRD with its tech spec / Figma / tickets</strong> open during the interview is useful as a memory anchor; if there are recent PRDs written as Tech PM, those are also welcome.</li>
+          <li>Data can be withdrawn within 30 days of the interview, without giving a reason.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 5 · Optional</span>
+        <h2><span class="num">5.</span> Phase Two</h2>
+        <p>After common patterns are identified from the first phase, a proposed improvement will be developed, and participants will be invited back for one feedback interview (about 45–60 minutes). Whether to participate in the second phase can be decided after the first-phase interview is complete.</p>
+      </section>
+
+      <p class="callout">For any questions about this document, or anything that would be useful to clarify in advance, please feel free to reply. <strong>Many thanks for taking the time.</strong></p>
     </div>
   </article>
 

@@ -143,7 +143,7 @@ a:hover { background: var(--accent-soft); }
 }
 
 /* =====================  TAB NAV  ===================== */
-.tab-radio { position: absolute; opacity: 0; pointer-events: none; }
+.lang-radio, .role-radio { position: absolute; opacity: 0; pointer-events: none; }
 
 .tab-nav {
   position: sticky;
@@ -158,13 +158,14 @@ a:hover { background: var(--accent-soft); }
   max-width: var(--max-page);
   margin: 0 auto;
   display: flex;
+  align-items: center;
   overflow-x: auto;
   padding: 0 32px;
   scrollbar-width: none;
 }
 .tab-nav-inner::-webkit-scrollbar { display: none; }
 
-.tab-nav-inner label {
+.tab-nav-inner > label {
   font-family: var(--sans);
   font-size: 13px;
   font-weight: 500;
@@ -180,50 +181,83 @@ a:hover { background: var(--accent-soft); }
   align-items: baseline;
   gap: 8px;
 }
-.tab-nav-inner label:hover { color: var(--ink); }
-.tab-nav-inner label .tab-num {
+.tab-nav-inner > label:hover { color: var(--ink); }
+.tab-nav-inner > label .tab-num {
   font-family: var(--mono);
   font-size: 10px;
   color: var(--ink-faint);
   font-weight: 400;
   letter-spacing: 0.04em;
 }
-.tab-nav-inner label .tab-lang {
+
+/* language switch (right side of tab nav) */
+.lang-switch {
+  margin-left: auto;
+  display: inline-flex;
+  align-self: center;
   font-family: var(--mono);
-  font-size: 9px;
-  color: var(--ink-faint);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 2px 5px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
   border: 1px solid var(--rule-strong);
-  border-radius: 2px;
+  border-radius: 3px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.lang-switch label {
+  padding: 5px 11px;
+  margin: 0;
+  cursor: pointer;
+  color: var(--ink-faint);
+  background: var(--bg);
+  transition: color 0.12s, background 0.12s;
+  user-select: none;
+  border-bottom: 0;
+  white-space: nowrap;
+}
+.lang-switch label + label {
+  border-left: 1px solid var(--rule-strong);
+}
+.lang-switch label:hover {
+  color: var(--ink);
 }
 
-/* active tab styling (label following the checked input) */
-#tab-pm:checked        ~ .tab-nav label[for="tab-pm"],
-#tab-designer:checked  ~ .tab-nav label[for="tab-designer"],
-#tab-backend:checked   ~ .tab-nav label[for="tab-backend"],
-#tab-backend-en:checked ~ .tab-nav label[for="tab-backend-en"],
-#tab-ios:checked       ~ .tab-nav label[for="tab-ios"] {
+/* active role tab */
+#role-pm:checked       ~ .tab-nav label[for="role-pm"],
+#role-designer:checked ~ .tab-nav label[for="role-designer"],
+#role-backend:checked  ~ .tab-nav label[for="role-backend"],
+#role-ios:checked      ~ .tab-nav label[for="role-ios"] {
   color: var(--ink);
   border-bottom-color: var(--accent);
 }
-#tab-pm:checked        ~ .tab-nav label[for="tab-pm"] .tab-num,
-#tab-designer:checked  ~ .tab-nav label[for="tab-designer"] .tab-num,
-#tab-backend:checked   ~ .tab-nav label[for="tab-backend"] .tab-num,
-#tab-backend-en:checked ~ .tab-nav label[for="tab-backend-en"] .tab-num,
-#tab-ios:checked       ~ .tab-nav label[for="tab-ios"] .tab-num {
+#role-pm:checked       ~ .tab-nav label[for="role-pm"] .tab-num,
+#role-designer:checked ~ .tab-nav label[for="role-designer"] .tab-num,
+#role-backend:checked  ~ .tab-nav label[for="role-backend"] .tab-num,
+#role-ios:checked      ~ .tab-nav label[for="role-ios"] .tab-num {
   color: var(--accent);
 }
 
-/* show / hide panels */
+/* active language */
+#lang-cn:checked ~ .tab-nav .lang-switch label[for="lang-cn"],
+#lang-en:checked ~ .tab-nav .lang-switch label[for="lang-en"] {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+/* inline bilingual text swapping */
+#lang-cn:checked ~ * .lang-en { display: none; }
+#lang-en:checked ~ * .lang-cn { display: none; }
+
+/* show / hide panels — visible iff matching role AND matching language */
 .tab-panel { display: none; }
 
-#tab-pm:checked        ~ main .tab-panel[data-tab="pm"],
-#tab-designer:checked  ~ main .tab-panel[data-tab="designer"],
-#tab-backend:checked   ~ main .tab-panel[data-tab="backend"],
-#tab-backend-en:checked ~ main .tab-panel[data-tab="backend-en"],
-#tab-ios:checked       ~ main .tab-panel[data-tab="ios"] {
+#lang-cn:checked ~ #role-pm:checked       ~ main .tab-panel[data-role="pm"][data-lang="cn"],
+#lang-cn:checked ~ #role-designer:checked ~ main .tab-panel[data-role="designer"][data-lang="cn"],
+#lang-cn:checked ~ #role-backend:checked  ~ main .tab-panel[data-role="backend"][data-lang="cn"],
+#lang-cn:checked ~ #role-ios:checked      ~ main .tab-panel[data-role="ios"][data-lang="cn"],
+#lang-en:checked ~ #role-pm:checked       ~ main .tab-panel[data-role="pm"][data-lang="en"],
+#lang-en:checked ~ #role-designer:checked ~ main .tab-panel[data-role="designer"][data-lang="en"],
+#lang-en:checked ~ #role-backend:checked  ~ main .tab-panel[data-role="backend"][data-lang="en"],
+#lang-en:checked ~ #role-ios:checked      ~ main .tab-panel[data-role="ios"][data-lang="en"] {
   display: block;
 }
 
