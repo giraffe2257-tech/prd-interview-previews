@@ -1198,7 +1198,72 @@
 
       <section class="section">
         <span class="section-anchor">Section 2</span>
-        <h2><span class="num">2.</span> 關鍵引述</h2>
+        <h2><span class="num">02</span> 受訪者描述的產品開發流程</h2>
+        <p>iOS Tech Owner 視角下，需求從 PM 發想到 RD 開始 coding 的完整路線。<strong>關鍵特色</strong>：以「<strong>雙場 Design Review</strong>」分隔出兩個階段——第一場是 Tech Owner 代表 RD 做可行性判斷，第二場才是所有 RD 與 Designer 一起講 spec。</p>
+
+        <div class="diagram-card">
+          <span class="diagram-card-eyebrow">Process · described by I·1</span>
+          <h3>I·1 描述的開發流程</h3>
+          <p class="diagram-desc">藍 = PM；橘 = 跨角色 review；綠 = RD；棕 = AI 工具；黃 = 決策點。從 rough PRD 出發，Tech Owner 在第一場 Design Review 就把不可行的需求擋下；通過後 Designer 才介入畫 Figma。</p>
+          <div class="mermaid">
+flowchart TD
+    PM["PM 寫 rough PRD"]
+    DR1["第一場 Design Review<br/>PM + Designer rep<br/>+ Tech Owner"]
+    DEC1{"可行?"}
+    KILL1["不做 / 拆分 / 補基礎建設"]
+    FIGMA["Designer 畫 Figma<br/>PM 補完細節"]
+    PRD2["正式 PRD<br/>+ Design Spec"]
+    DR2["第二場 Design Review<br/>PM + 所有 Designers<br/>+ 所有 RD"]
+    RD_REVIEW["RD 內部 review<br/>人力分配"]
+    AISCAN["AI 預掃 PRD<br/>vs Code Base"]
+    DEV["開發<br/>Tech Design Doc → Code"]
+
+    PM ==> DR1
+    DR1 ==> DEC1
+    DEC1 -->|否| KILL1
+    DEC1 ==>|是| FIGMA
+    FIGMA ==> PRD2
+    PRD2 ==> DR2
+    DR2 ==> RD_REVIEW
+    RD_REVIEW ==> AISCAN
+    AISCAN ==> DEV
+
+    classDef pmStyle fill:#EFF2FB,stroke:#1E40AF,stroke-width:2px,color:#0F1419
+    classDef crossStyle fill:#FDF1DC,stroke:#B45309,stroke-width:2px,color:#0F1419
+    classDef rdStyle fill:#E9F4ED,stroke:#166534,stroke-width:2px,color:#0F1419
+    classDef aiStyle fill:#F5EBF1,stroke:#7E3F65,stroke-width:2px,color:#0F1419
+    classDef decisionStyle fill:#FFF5C2,stroke:#B45309,stroke-width:2px,color:#0F1419
+    classDef killStyle fill:#FCE4EC,stroke:#9F1239,stroke-width:1.5px,color:#0F1419
+
+    class PM pmStyle
+    class FIGMA pmStyle
+    class PRD2 pmStyle
+    class DR1 crossStyle
+    class DR2 crossStyle
+    class RD_REVIEW rdStyle
+    class DEV rdStyle
+    class AISCAN aiStyle
+    class DEC1 decisionStyle
+    class KILL1 killStyle
+          </div>
+          <div class="diagram-legend">
+            <span class="legend-item"><span class="legend-swatch" style="background:#EFF2FB;border-color:#1E40AF"></span>PM</span>
+            <span class="legend-item"><span class="legend-swatch" style="background:#FDF1DC;border-color:#B45309"></span>跨角色 review</span>
+            <span class="legend-item"><span class="legend-swatch" style="background:#E9F4ED;border-color:#166534"></span>RD</span>
+            <span class="legend-item"><span class="legend-swatch" style="background:#F5EBF1;border-color:#7E3F65"></span>AI 工具</span>
+            <span class="legend-item"><span class="legend-swatch" style="background:#FFF5C2;border-color:#B45309"></span>決策點</span>
+          </div>
+        </div>
+
+        <p class="callout">
+          <strong>與 I·2 的關鍵差異</strong>：I·1 的「第一場 Design Review」是<strong>把關 / kill-switch</strong> 性質（Tech Owner 一個人代表 RD 決定行或不行）；
+          I·2 的「PRD Review」則是<strong>全員到齊的盤點會議</strong>（每個 team 自己派人來判斷影響）。前者依賴 Tech Owner 的個人 code base 知識，後者把判斷分散到所有 team。
+        </p>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 3</span>
+        <h2><span class="num">03</span> 關鍵引述</h2>
 
         <blockquote class="pull-quote">
           很多事情都是要真的進到開發後你才有辦法知道。但現在我們想要做的，是能不能讓這些事情盡可能往前期就被發現。
@@ -1212,8 +1277,8 @@
       </section>
 
       <section class="section">
-        <span class="section-anchor">Section 3</span>
-        <h2><span class="num">3.</span> 衍生視覺化 — 角色關係圖</h2>
+        <span class="section-anchor">Section 4</span>
+        <h2><span class="num">04</span> 衍生視覺化 — 角色關係圖</h2>
         <p>PRD 流向所有角色，每個角色基於各自 domain knowledge 產出派生文件。<strong>關鍵不對稱</strong>：只有 RD 需要讀其他三方的派生文件才能產出 Tech Design Document。</p>
 
         <div class="diagram-card">
@@ -1283,8 +1348,8 @@ flowchart TD
       </section>
 
       <section class="section">
-        <span class="section-anchor">Section 4</span>
-        <h2><span class="num">4.</span> 衍生視覺化 — 跨團隊 MCP 願景</h2>
+        <span class="section-anchor">Section 5</span>
+        <h2><span class="num">05</span> 衍生視覺化 — 跨團隊 MCP 願景</h2>
         <p>受訪者描述的「PM 透過 MCP 主視窗自動跨團隊查詢」流程。把「我需要找誰」這個 meta-knowledge 從 PM 的 tacit knowledge 變成系統化的 explicit knowledge。</p>
 
         <div class="diagram-card">
@@ -1341,8 +1406,8 @@ flowchart TD
       </section>
 
       <section class="section">
-        <span class="section-anchor">Section 5</span>
-        <h2><span class="num">5.</span> 進一步閱讀</h2>
+        <span class="section-anchor">Section 6</span>
+        <h2><span class="num">06</span> 進一步閱讀</h2>
         <p>本訪談相關文件（research repo 內、未對外公開）：</p>
         <ul>
           <li><code>Interview 1/transcript - cleaned.md</code> — 完整 cleaned 逐字稿（含分節 + 系統性修正清單）</li>
@@ -1393,8 +1458,57 @@ flowchart TD
 
       <section class="section">
         <span class="section-anchor">Section 2</span>
-        <h2><span class="num">2.</span> TikTok 的產品開發流程（受訪者口述）</h2>
+        <h2><span class="num">02</span> TikTok 的產品開發流程（受訪者口述）</h2>
         <p>受訪者完整描述了 backend 視角下，一個需求從 PRD 到上線的完整管線。這是本場訪談最有結構的內容，也是 §III Synthesis 兩張新流程圖的基礎。</p>
+
+        <div class="diagram-card">
+          <span class="diagram-card-eyebrow">Process · described by I·2</span>
+          <h3>I·2 描述的 TikTok 開發流程</h3>
+          <p class="diagram-desc">藍 = PM；橘 = 跨團隊會議；綠 = RD / QA；黃 = 上線後監控。八個 stage 的純線性 pipeline，兩個 PRD 會議的<strong>邀請對象大小</strong>是這場訪談的關鍵差異點：第一場全員到齊、第二場只剩動手的人。</p>
+          <div class="mermaid">
+flowchart TD
+    PM["Stage 0<br/>PM 寫 PRD"]
+    M1["Stage 1<br/>PRD Review Meeting<br/>全員 · 1 小時"]
+    M2["Stage 2<br/>詳評會<br/>Engineer only"]
+    TS["Stage 3<br/>Engineer 寫 Tech Spec<br/>team-specific · 週二/週四 review"]
+    DEV["Stage 4<br/>開發 + 自測"]
+    QA["Stage 5<br/>QA 驗證"]
+    LAUNCH["Stage 6<br/>上線"]
+    MON["Stage 7<br/>監控 + Alarm"]
+
+    PM ==> M1
+    M1 ==> M2
+    M2 ==> TS
+    TS ==> DEV
+    DEV ==> QA
+    QA ==> LAUNCH
+    LAUNCH ==> MON
+
+    classDef pmStyle fill:#EFF2FB,stroke:#1E40AF,stroke-width:2px,color:#0F1419
+    classDef crossStyle fill:#FDF1DC,stroke:#B45309,stroke-width:2px,color:#0F1419
+    classDef rdStyle fill:#E9F4ED,stroke:#166534,stroke-width:2px,color:#0F1419
+    classDef launchStyle fill:#FFF5C2,stroke:#B45309,stroke-width:2px,color:#0F1419
+
+    class PM pmStyle
+    class M1 crossStyle
+    class M2 crossStyle
+    class TS rdStyle
+    class DEV rdStyle
+    class QA rdStyle
+    class LAUNCH launchStyle
+    class MON launchStyle
+          </div>
+          <div class="diagram-legend">
+            <span class="legend-item"><span class="legend-swatch" style="background:#EFF2FB;border-color:#1E40AF"></span>PM</span>
+            <span class="legend-item"><span class="legend-swatch" style="background:#FDF1DC;border-color:#B45309"></span>跨團隊會議</span>
+            <span class="legend-item"><span class="legend-swatch" style="background:#E9F4ED;border-color:#166534"></span>RD / QA</span>
+            <span class="legend-item"><span class="legend-swatch" style="background:#FFF5C2;border-color:#B45309"></span>上線 / 監控</span>
+          </div>
+        </div>
+
+        <p class="callout">
+          <strong>此圖為「純流程」版</strong>：只呈現 happy path。在 §III Synthesis · Diagram A 會疊加 edge case 返工路徑，看完整的「漏網 → 回 PM」迴圈。
+        </p>
 
         <h3>2.1 流程中的兩個關鍵會議</h3>
         <table>
