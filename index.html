@@ -3,14 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Interview Previews — PRD as Boundary Object | Wang Wei, KCL</title>
-<meta name="description" content="Interview preview documents for participants of an MSc dissertation study on PRDs as boundary objects in cross-functional product development.">
+<title>PRD as Boundary Object · Interview Workbook | Wang Wei, KCL</title>
+<meta name="description" content="Thesis workbook for an MSc dissertation study on PRDs as boundary objects in cross-functional product development: interview previews, findings, and cross-interview synthesis.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 </head>
 <body>
+
+<!-- View radios (top-level: Previews / Findings / Synthesis) — must precede everything they control -->
+<input type="radio" name="view" id="view-previews"  class="view-radio" checked>
+<input type="radio" name="view" id="view-findings"  class="view-radio">
+<input type="radio" name="view" id="view-synthesis" class="view-radio">
+
+<!-- Interview radios (inside Findings) -->
+<input type="radio" name="interview" id="interview-1" class="interview-radio" checked>
+<input type="radio" name="interview" id="interview-2" class="interview-radio">
 
 <!-- Language radios (must precede role radios, both siblings of .tab-nav and main) -->
 <input type="radio" name="lang" id="lang-cn" class="lang-radio" checked>
@@ -24,7 +34,7 @@
 
 <header class="site-header">
   <div class="site-header-inner">
-    <h1 class="site-title">PRD as Boundary Object <em>· Interview Previews</em></h1>
+    <h1 class="site-title">PRD as Boundary Object <em>· Interview Workbook</em></h1>
     <div class="site-meta">
       <span>KCL · MSc MTC</span>
       <span>Wang Wei · AG08404</span>
@@ -32,6 +42,15 @@
     </div>
   </div>
 </header>
+
+<!-- Top-level view nav -->
+<nav class="view-nav" aria-label="Section selector">
+  <div class="view-nav-inner" role="tablist">
+    <label for="view-previews"  role="tab"><span class="view-num">I</span>  Previews <span style="color:var(--ink-faint);font-weight:400;">· 訪綱預覽</span></label>
+    <label for="view-findings"  role="tab"><span class="view-num">II</span> Findings <span style="color:var(--ink-faint);font-weight:400;">· 訪談紀錄</span></label>
+    <label for="view-synthesis" role="tab"><span class="view-num">III</span>Synthesis<span style="color:var(--ink-faint);font-weight:400;">· 跨訪談綜合</span></label>
+  </div>
+</nav>
 
 <section class="hero">
   <span class="hero-eyebrow">Research Study · Phase One Interview Previews</span>
@@ -1106,12 +1125,705 @@
 
 </main>
 
+<!-- ============================================================
+     VIEW II — FINDINGS（訪談紀錄）
+     ============================================================ -->
+<section class="view-section" data-view="findings" aria-label="Findings">
+
+  <div class="view-hero">
+    <span class="view-hero-eyebrow">Section II · 訪談紀錄</span>
+    <h2 class="view-hero-title">Findings — 各訪談的脈絡、引述與分析筆記</h2>
+    <p class="view-hero-deck">
+      本區整理目前已完成的訪談紀錄。每場訪談含：受訪者背景、主要論點摘要、關鍵引述，以及由該場訪談衍生的視覺化。
+      完整逐字稿與分析文件存放於本研究 repository 的 <code>04_interviews/Interview N/</code> 資料夾，僅供研究者本人檢索。
+    </p>
+  </div>
+
+  <nav class="findings-subnav" aria-label="Interview selector">
+    <div class="findings-subnav-inner" role="tablist">
+      <label for="interview-1" role="tab"><span class="tab-num">I·1</span>Interview 1 — Senior iOS / Tech Owner</label>
+      <label for="interview-2" role="tab"><span class="tab-num">I·2</span>Interview 2 — Backend Engineer</label>
+    </div>
+  </nav>
+
+  <!-- ============ Interview 1 ============ -->
+  <article class="interview-panel" data-interview="1" role="tabpanel">
+    <div class="panel-wrap">
+      <header class="panel-hero">
+        <span class="panel-eyebrow">Interview 1 · Senior iOS + Tech Owner</span>
+        <h1 class="panel-title">直播團隊 · iOS Tech Owner</h1>
+        <p class="panel-lede">
+          現任 ByteDance TikTok 直播團隊 Senior iOS Engineer 兼 Tech Owner，是 PM 與 RD 之間的橋樑。
+          訪談 focus 在 PRD 在跨角色協作中的位置、雙場 Design Review 機制、以及 AI / MCP 對既有流程的鬆動。
+        </p>
+        <dl class="stat-strip">
+          <div><dt>Experience</dt><dd>8<span class="stat-sub">年資 · Senior iOS</span></dd></div>
+          <div><dt>Duration</dt><dd>53<span class="stat-sub">分鐘訪談</span></dd></div>
+          <div><dt>Key Themes</dt><dd>5<span class="stat-sub">大論點</span></dd></div>
+          <div><dt>Date · Code</dt><dd>I·1<span class="stat-sub">2026-05-15 · Engineer-01</span></dd></div>
+        </dl>
+      </header>
+
+      <section class="section">
+        <span class="section-anchor">Section 1</span>
+        <h2><span class="num">01</span> 主要論點</h2>
+        <div class="key-card-grid">
+          <div class="key-card">
+            <span class="key-num">01</span>
+            <h4>PRD 是起點，但「真正的 PRD」其實散落多處</h4>
+            <p>對 RD 來說 真正的 PRD = 原始 PRD + Figma comments + Ticket 更新。SSOT 是 PRD 的目標，現實是 PRD 之外還要追三個地方。</p>
+          </div>
+          <div class="key-card">
+            <span class="key-num">02</span>
+            <h4>雙場 Design Review 機制</h4>
+            <p>第一場確認可行性（Tech Owner 代表 RD 出席）、第二場 PM 跟所有 RD/Designer 講解 spec。</p>
+          </div>
+          <div class="key-card">
+            <span class="key-num">03</span>
+            <h4>三大流程痛點</h4>
+            <p>(1) Tech Owner 對 code base 理解的限制造成返工；(2) PM 估時不準；(3) PM 經驗決定 edge case 完整度。</p>
+          </div>
+          <div class="key-card">
+            <span class="key-num">04</span>
+            <h4>SSOT 雙重結構</h4>
+            <p>PRD = 設計意圖的 SSOT，Code Base = 運行行為的 SSOT；兩者之間的「drift」本身就是 boundary 治理問題。</p>
+          </div>
+          <div class="key-card">
+            <span class="key-num">05</span>
+            <h4>AI / MCP 願景</h4>
+            <p>跨團隊 MCP 主視窗讓 PM 不需要預判「我要找誰」——把 tacit knowledge 顯化為系統能查的 explicit knowledge。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 2</span>
+        <h2><span class="num">2.</span> 關鍵引述</h2>
+
+        <blockquote class="pull-quote">
+          很多事情都是要真的進到開發後你才有辦法知道。但現在我們想要做的，是能不能讓這些事情盡可能往前期就被發現。
+          <cite>— Engineer-01 · 談痛點根因</cite>
+        </blockquote>
+
+        <blockquote class="pull-quote">
+          好的 PRD 應該是後續的更新都應該要再更新回原本的 PRD 上才對。因為我們希望走 SSOT（Single Source of Truth）這件事情。現在資訊散落在不同地方……整合資訊的成本很大、也可能會有矛盾。
+          <cite>— Engineer-01 · 談 Figma / Ticket 散落問題</cite>
+        </blockquote>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 3</span>
+        <h2><span class="num">3.</span> 衍生視覺化 — 角色關係圖</h2>
+        <p>PRD 流向所有角色，每個角色基於各自 domain knowledge 產出派生文件。<strong>關鍵不對稱</strong>：只有 RD 需要讀其他三方的派生文件才能產出 Tech Design Document。</p>
+
+        <div class="diagram-card">
+          <span class="diagram-card-eyebrow">Diagram · derived from I·1</span>
+          <h3>角色關係圖 — PRD 為起點的派生文件鏈</h3>
+          <p class="diagram-desc">五個角色 × 五份產出文件。雙線表示「主要產出 / 必讀關係」，虛線表示「RD 為了寫 Tech Design Document 必須額外讀的派生文件」。</p>
+          <div class="mermaid">
+flowchart TD
+    PM["PM<br/>Product Knowledge"]
+    PRD["PRD<br/>設計意圖的 SSOT"]
+    Designer["Designer<br/>Design System"]
+    QA["QA<br/>主要靠 PRD"]
+    DA["DA<br/>Data Center"]
+    RD["RD<br/>Code Base"]
+    Figma["Figma"]
+    TestCase["Test Case"]
+    EventSpec["Event Spec"]
+    TDD["Tech Design Document<br/>RD 的開發契約"]
+    CB["Code Base<br/>運行行為的 SSOT"]
+
+    PM ==>|撰寫| PRD
+    PRD ==>|讀| Designer
+    PRD ==>|讀| QA
+    PRD ==>|讀| DA
+    PRD ==>|讀| RD
+
+    Designer ==>|產出| Figma
+    QA ==>|產出| TestCase
+    DA ==>|產出| EventSpec
+
+    Figma -.->|RD 必讀| RD
+    TestCase -.->|RD 必讀| RD
+    EventSpec -.->|RD 必讀| RD
+
+    RD ==>|整合| TDD
+    CB -.->|參考 / 寫入| RD
+
+    classDef pmStyle fill:#1E40AF,stroke:#1E3A8A,color:#fff
+    classDef desStyle fill:#7E3F65,stroke:#5A2D49,color:#fff
+    classDef qaStyle fill:#B45309,stroke:#7C3B05,color:#fff
+    classDef daStyle fill:#7E3F65,stroke:#5A2D49,color:#fff
+    classDef rdStyle fill:#166534,stroke:#0F4023,color:#fff
+    classDef prdStyle fill:#FFF5C2,stroke:#92400E,color:#1A202C
+    classDef tddStyle fill:#FDF1DC,stroke:#92400E,color:#1A202C
+    classDef figStyle fill:#F5EBF1,stroke:#7E3F65,color:#1A202C
+    classDef tcStyle fill:#FDF1DC,stroke:#B45309,color:#1A202C
+    classDef esStyle fill:#F5EBF1,stroke:#7E3F65,color:#1A202C
+    classDef cbStyle fill:#0F1419,stroke:#000,color:#fff
+
+    class PM pmStyle
+    class Designer desStyle
+    class QA qaStyle
+    class DA daStyle
+    class RD rdStyle
+    class PRD prdStyle
+    class TDD tddStyle
+    class Figma figStyle
+    class TestCase tcStyle
+    class EventSpec esStyle
+    class CB cbStyle
+          </div>
+          <div class="diagram-legend">
+            <span class="legend-item">— 主要產出 / 必讀</span>
+            <span class="legend-item">⋯ RD 額外整合義務</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 4</span>
+        <h2><span class="num">4.</span> 衍生視覺化 — 跨團隊 MCP 願景</h2>
+        <p>受訪者描述的「PM 透過 MCP 主視窗自動跨團隊查詢」流程。把「我需要找誰」這個 meta-knowledge 從 PM 的 tacit knowledge 變成系統化的 explicit knowledge。</p>
+
+        <div class="diagram-card">
+          <span class="diagram-card-eyebrow">Diagram · derived from I·1</span>
+          <h3>MCP 主視窗 — 跨團隊知識聚合（願景架構）</h3>
+          <p class="diagram-desc">PM 一句話 → 主視窗自動識別涉及的 team → 並行調用各 team 的 MCP → 聚合成單一自然語言回應。<strong>注意</strong>：此為訪談中描述的「願景架構」，各 team 的 MCP 完整度仍需後續驗證。</p>
+          <div class="mermaid">
+flowchart TD
+    PM["PM 有新需求"]
+    Q["需求 X 會涉及哪些 team？<br/>各 team 怎麼處理 edge case？"]
+    Main["MCP 主視窗<br/>路由 + 聚合"]
+
+    PM ==>|提問| Q
+    Q ==> Main
+
+    Main ==>|自動識別| Live["Live MCP"]
+    Main ==>|自動識別| Legal["Legal MCP"]
+    Main ==>|自動識別| Profile["Profile MCP"]
+    Main ==>|自動識別| Gift["Gift MCP"]
+
+    Live --> LiveAns["直播框架邏輯"]
+    Legal --> LegalAns["封禁 / 合規"]
+    Profile --> ProfileAns["主播彈窗"]
+    Gift --> GiftAns["禮物 trigger"]
+
+    LiveAns ==> Agg["整合自然語言回應<br/>涉及 4 team，各邊界…"]
+    LegalAns ==> Agg
+    ProfileAns ==> Agg
+    GiftAns ==> Agg
+
+    Agg ==> PMOut["PM 收到完整跨團隊資訊<br/>可寫含 edge case 的 PRD"]
+
+    classDef pmStyle fill:#1E40AF,stroke:#1E3A8A,color:#fff
+    classDef qStyle fill:#FFF5C2,stroke:#B45309,color:#1A202C
+    classDef mainStyle fill:#B45309,stroke:#7C3B05,color:#fff
+    classDef teamStyle fill:#0F1419,stroke:#000,color:#fff
+    classDef ansStyle fill:#E9F4ED,stroke:#166534,color:#1A202C
+
+    class PM pmStyle
+    class PMOut pmStyle
+    class Q qStyle
+    class Main mainStyle
+    class Agg mainStyle
+    class Live teamStyle
+    class Legal teamStyle
+    class Profile teamStyle
+    class Gift teamStyle
+    class LiveAns ansStyle
+    class LegalAns ansStyle
+    class ProfileAns ansStyle
+    class GiftAns ansStyle
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 5</span>
+        <h2><span class="num">5.</span> 進一步閱讀</h2>
+        <p>本訪談相關文件（research repo 內、未對外公開）：</p>
+        <ul>
+          <li><code>Interview 1/transcript - cleaned.md</code> — 完整 cleaned 逐字稿（含分節 + 系統性修正清單）</li>
+          <li><code>Interview 1/analytical notes.md</code> — 分析筆記</li>
+          <li><code>Interview 1/critical review.md</code> — 批判性檢視</li>
+          <li><code>Interview 1/diagrams/index.html</code> — 互動式決策樹（含完整 Mermaid 圖）</li>
+        </ul>
+      </section>
+    </div>
+  </article>
+
+  <!-- ============ Interview 2 ============ -->
+  <article class="interview-panel" data-interview="2" role="tabpanel">
+    <div class="panel-wrap">
+      <header class="panel-hero">
+        <span class="panel-eyebrow">Interview 2 · Backend Engineer</span>
+        <h1 class="panel-title">直播打賞團隊 · Backend Engineer</h1>
+        <p class="panel-lede">
+          前 ByteDance TikTok Live Revenue 團隊（直播打賞特效），目前任職於另一家較中大型公司。
+          訪談 focus 在 TikTok backend 視角的完整開發流程、edge case 漏網的結構性原因、以及 AI / MCP 對 PM、Engineer、DA 三方角色的重塑。
+        </p>
+        <dl class="stat-strip">
+          <div><dt>Experience</dt><dd>3<span class="stat-sub">年資 · Backend</span></dd></div>
+          <div><dt>Duration</dt><dd>42<span class="stat-sub">分鐘訪談</span></dd></div>
+          <div><dt>Key Themes</dt><dd>5<span class="stat-sub">大論點</span></dd></div>
+          <div><dt>Date · Code</dt><dd>I·2<span class="stat-sub">2026-05-19 · Engineer-02</span></dd></div>
+        </dl>
+      </header>
+
+      <section class="section">
+        <span class="section-anchor">Section 1</span>
+        <h2><span class="num">01</span> TL;DR — 三句話讀懂這場訪談</h2>
+        <div class="tldr-cards">
+          <div class="tldr-card">
+            <span class="tldr-num">01</span>
+            <p><strong>兩階段 PRD 會議的接力</strong>：第一場「PRD Review」是跨團隊盤點影響 + 安排人力（1 小時、全員）；第二場「詳評」只邀真正要做的 engineer 做細部澄清；之後每個 RD 團隊把 PRD 轉成 Tech Spec（backend 是週二/週四 review 節奏）。</p>
+          </div>
+          <div class="tldr-card">
+            <span class="tldr-num">02</span>
+            <p><strong>核心痛點是 edge case 缺漏</strong>：PM 只想 happy path，工程師在開發、QA、甚至上線後才發現「happy path <em>not so happy</em>」。功能越複雜、跨 team 越多，這個問題越嚴重。</p>
+          </div>
+          <div class="tldr-card">
+            <span class="tldr-num">03</span>
+            <p><strong>AI 改變的不是「讀 PRD」，而是「誰來做 0→1」</strong>：PRD 還是人讀（怕 AI 漏細節），但 PM 可能用 vibe coding 自己做 POC 解決 "make it work"，engineer 只做 "make it better"，連 DA 也被 PM 自助式 metrics 部分取代。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 2</span>
+        <h2><span class="num">2.</span> TikTok 的產品開發流程（受訪者口述）</h2>
+        <p>受訪者完整描述了 backend 視角下，一個需求從 PRD 到上線的完整管線。這是本場訪談最有結構的內容，也是 §III Synthesis 兩張新流程圖的基礎。</p>
+
+        <h3>2.1 流程中的兩個關鍵會議</h3>
+        <table>
+          <thead><tr><th>會議</th><th>邀請對象</th><th>目的 / 時長</th></tr></thead>
+          <tbody>
+            <tr><td><strong>PRD Review</strong></td><td>所有可能被 tag 的團隊（前端 / Backend / Mobile / QA / DA / BD 全進）</td><td>① review PRD ② 安排各團隊人力（1 小時）</td></tr>
+            <tr><td><strong>詳評（詳細評估）</strong></td><td>縮小到「真的要動手」的 engineer</td><td>PM 把 PRD 再走一次，engineer clarify 不清楚的地方</td></tr>
+          </tbody>
+        </table>
+
+        <h3>2.2 流程中三個關鍵的隱性慣例</h3>
+        <table>
+          <thead><tr><th>慣例</th><th>內容</th><th>影響</th></tr></thead>
+          <tbody>
+            <tr><td>Service-based mental model</td><td>工程師拿到 PRD 第一件事，是把它對應到自己負責的 service / API 介面 — 而不是讀 code</td><td>工程師理解需求的單位是「service」，不是「PRD 章節」</td></tr>
+            <tr><td>PRD review 全員都來</td><td>1 小時、PM/RD/QA/DA/BD 一起，邊看邊判</td><td>「<strong>讓不確定的人先進來，事後可回收</strong>」</td></tr>
+            <tr><td>Tech Spec 是 team-specific 儀式</td><td>不同 team 有不同 template；backend 有固定的週二/週四 review</td><td>同一份 PRD 在不同 team 會被轉成截然不同的 Tech Spec</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 3</span>
+        <h2><span class="num">03</span> Edge Case 漏網 = 返工（與 I·1 一致）</h2>
+        <p>受訪者直言這是 PRD 工作流中的「common pattern」，與 Interview 1 高度一致。Edge case 漏網會在四個階段被發現，越晚發現代價越高：</p>
+
+        <div class="timeline-h">
+          <div class="timeline-step">
+            <div class="timeline-dot">1</div>
+            <h5>PRD Review 當下</h5>
+            <p>review 時 engineer 直接 raise</p>
+            <span class="timeline-cost">最理想 · 零返工</span>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot">2</div>
+            <h5>開發中發現</h5>
+            <p>寫 spec 或寫 code 才發現要回頭問 PM</p>
+            <span class="timeline-cost">小返工</span>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot">3</div>
+            <h5>QA 測試中</h5>
+            <p>QA 跑 case 才發現邏輯不對</p>
+            <span class="timeline-cost">中返工</span>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-dot">4</div>
+            <h5>上線後監控警報</h5>
+            <p>真實用戶觸發 edge case 才被發現</p>
+            <span class="timeline-cost">最痛 · 可能需要 hot-fix</span>
+          </div>
+        </div>
+
+        <blockquote class="pull-quote">
+          PM 想出這些需求的時候，可能是想一個 happy path。但我們開發的時候就發現——這個 happy path <em>not so happy</em>。
+          <cite>— Engineer-02 · 談 edge case 來源</cite>
+        </blockquote>
+
+        <p class="callout">
+          <strong>結構性問題</strong>：功能越複雜、牽扯到的 team 越多，越難把所有不同的 case 想出來。這不是個別 PM 的能力問題。
+          → 此觀察直接演進為 <strong>§III Synthesis · Diagram 1（含 edge case 的 TikTok 流程圖）</strong>。
+        </p>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 4</span>
+        <h2><span class="num">4.</span> AI 介入時，工程師守的「最後一關」</h2>
+        <p>受訪者不是 AI 樂觀派也不是悲觀派——他畫了一條清楚的線：</p>
+        <table>
+          <thead><tr><th>任務</th><th>怎麼做</th><th>為什麼</th></tr></thead>
+          <tbody>
+            <tr><td>讀懂 PRD</td><td><strong>自己讀</strong></td><td>「不能保證 AI 告訴我的是對的，怕漏掉重要細節」</td></tr>
+            <tr><td>找影響到哪些 service</td><td>問 AI</td><td>「過去要找 Tech Lead，要先解釋背景，很慢」</td></tr>
+            <tr><td>PRD → Tech Spec</td><td>看公司 AI 投資</td><td>新公司 95% 成功；TikTok 那時還沒有</td></tr>
+            <tr><td>找 Tech Lead 的最終目的</td><td><strong>拿到 OK</strong></td><td>商量好了 Tech Lead 不同意還是不能上</td></tr>
+          </tbody>
+        </table>
+
+        <blockquote class="pull-quote">
+          不同的 data source 都可以想像成是一個 MCP。如果沒有，AI 就沒有足夠的數據來做判斷，那結果就比較差。
+          <cite>— Engineer-02 · 驗證 I·1 提到的 ByteDance MCP 化趨勢</cite>
+        </blockquote>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 5</span>
+        <h2><span class="num">05</span> 對未來角色的預測 — make it work / make it better</h2>
+        <p>受訪者反轉了訪談者預設的問題（「AI 能不能讓 PM 寫更好的 PRD？」）：</p>
+
+        <blockquote class="pull-quote">
+          我覺得不是把 PRD 寫得更詳細——可能是 PM 以後不需要 engineer 了。如果他們有 idea，可以先自己寫一個 POC，發給用戶用，回收數據；如果結果好，再把 idea 發給 engineer 做 scale up。
+          <cite>— Engineer-02 · 對 PM 角色的大膽預測</cite>
+        </blockquote>
+
+        <div class="compare-side">
+          <div>
+            <h4>Stage A · 0 → 1</h4>
+            <h3>"Make it work"</h3>
+            <p>把一個粗糙的功能先做出來，丟給用戶試試水溫。重點是<strong>快</strong>，不是好。</p>
+            <ul>
+              <li>不需要 review meeting、不需要 Tech Spec</li>
+              <li>單一人推到底，不需要溝通成本</li>
+              <li>失敗了損失也小</li>
+            </ul>
+            <span class="compare-tag">PM + AI vibe coding</span>
+          </div>
+          <div>
+            <h4>Stage B · 1 → N</h4>
+            <h3>"Make it better"</h3>
+            <p>已有 POC + 用戶數據驗證後，engineer 接手做<strong>穩定性、效能、規模化</strong>。</p>
+            <ul>
+              <li>正式 PRD + 跨團隊 review</li>
+              <li>Tech Spec + Tech Lead OK</li>
+              <li>QA / 監控 / hot-fix 全套</li>
+            </ul>
+            <span class="compare-tag">Engineer + 既有流程</span>
+          </div>
+        </div>
+
+        <p class="callout">
+          <strong>受訪者自評</strong>：在 TikTok 工作 <strong>~80%</strong> 是 "make it better"。所以即便 "make it work" 改由 PM + AI 完成，結構也不會被全面改寫——但<strong>漏斗的源頭會被加速</strong>。
+        </p>
+
+        <blockquote class="pull-quote">
+          現在我們做 engineer 的，我們的 value 是來說「這個 problem 值不值得 solve / it's a beautiful problem to solve」。
+          <cite>— Engineer-02 · 工程師價值的位移</cite>
+        </blockquote>
+
+        <p class="callout notice-warn">
+          <strong>另一個角色被打到 — DA</strong>：以前工程師寫 SQL 把 metric 拉給 PM；現在 PM 自己用 AI 寫 SQL，DA 角色被部分取代。
+          → 此觀察是 <strong>§III Synthesis · Diagram 2（AI 輔助流程）</strong> 的核心動力之一。
+        </p>
+      </section>
+
+      <section class="section">
+        <span class="section-anchor">Section 6</span>
+        <h2><span class="num">6.</span> 進一步閱讀</h2>
+        <ul>
+          <li><code>Interview 2/transcript - cleaned.md</code> — cleaned 逐字稿（合併兩次 mlx-whisper 轉錄並去除幻覺迴圈）</li>
+          <li><code>Interview 2/summary.md</code> — 重點整理（含與 Interview 1 的對照表、論文引用 hook）</li>
+        </ul>
+      </section>
+    </div>
+  </article>
+
+</section>
+
+<!-- ============================================================
+     VIEW III — SYNTHESIS（跨訪談綜合）
+     ============================================================ -->
+<section class="view-section" data-view="synthesis" aria-label="Synthesis">
+
+  <div class="view-hero">
+    <span class="view-hero-eyebrow">Section III · 跨訪談綜合</span>
+    <h2 class="view-hero-title">Synthesis — 流程圖與跨訪談對照</h2>
+    <p class="view-hero-deck">
+      綜合 Interview 1（iOS Tech Owner）與 Interview 2（Backend Engineer）兩位受訪者的描述，把訪談裡反覆出現的痛點與未來想像，具象化為兩張流程圖：
+      <strong>(1) 含 edge case 返工路徑的 TikTok 現況流程</strong>、<strong>(2) AI 輔助下產品開發的可能樣貌</strong>。
+    </p>
+  </div>
+
+  <div class="panel-wrap">
+
+    <section class="section">
+      <span class="section-anchor">Diagram 1</span>
+      <h2><span class="num">A.</span> 含 Edge Case 返工路徑的 TikTok 流程</h2>
+      <p>
+        以 Interview 2 §2 的線性流程為主幹（PM → PRD Review → 詳評 → Tech Spec → 開發 → QA → 上線 → 監控），疊加 Interview 2 §3 描述的 edge case 漏網路徑。
+        橘色虛線箭頭表示「在這個階段發現 edge case → 必須回頭找 PM 釐清」。<strong>編號越大、代價越高</strong>。
+      </p>
+
+      <div class="diagram-card">
+        <span class="diagram-card-eyebrow">Diagram · Synthesis of I·1 + I·2</span>
+        <h3>TikTok 產品開發流程 ＋ Edge Case 返工路徑</h3>
+        <p class="diagram-desc">
+          綠色實線為 happy path；橘色虛線為「在該階段發現 edge case → 回到 PM 釐清 / 補 PRD」的返工路徑。
+          受訪者 Engineer-02：「PM 想出這些需求，可能是想一個 happy path。但我們開發的時候就發現——這個 happy path <em>not so happy</em>。」
+        </p>
+        <div class="mermaid">
+flowchart TD
+    PM["Stage 0<br/>PM 撰寫 PRD<br/>(happy path)"]
+    R1["Stage 1<br/>PRD Review Meeting<br/>全員 · 1 小時"]
+    R2["Stage 2<br/>詳評會<br/>Engineer only"]
+    TS["Stage 3<br/>Engineer 寫 Tech Spec<br/>team-specific · 週二/週四 review"]
+    DEV["Stage 4<br/>開發 + 自測"]
+    QA["Stage 5<br/>QA 驗證"]
+    LAUNCH["Stage 6<br/>上線"]
+    MON["Stage 7<br/>上線後監控<br/>警報 / Alarm"]
+
+    PM ==> R1
+    R1 ==> R2
+    R2 ==> TS
+    TS ==> DEV
+    DEV ==> QA
+    QA ==> LAUNCH
+    LAUNCH ==> MON
+
+    R1 -.->|1 最理想<br/>review 當下發現| PM
+    R2 -.->|2 詳評時 clarify| PM
+    TS -.->|3 寫 spec 才發現| PM
+    DEV -.->|4 開發中發現<br/>happy path not so happy| PM
+    QA -.->|5 QA 測試發現| PM
+    MON -.->|6 上線後警報<br/>最痛 · 可能需要 hot-fix| PM
+
+    classDef happyNode fill:#E9F4ED,stroke:#166534,stroke-width:2px,color:#0F1419
+    classDef pmNode fill:#EFF2FB,stroke:#1E40AF,stroke-width:2px,color:#0F1419
+    classDef endNode fill:#FFF5C2,stroke:#B45309,stroke-width:2px,color:#0F1419
+
+    class PM pmNode
+    class R1 happyNode
+    class R2 happyNode
+    class TS happyNode
+    class DEV happyNode
+    class QA happyNode
+    class LAUNCH endNode
+    class MON endNode
+
+    linkStyle 0,1,2,3,4,5,6 stroke:#166534,stroke-width:2.5px
+    linkStyle 7,8,9,10,11,12 stroke:#B45309,stroke-width:1.5px,stroke-dasharray: 6 4
+        </div>
+        <div class="diagram-legend">
+          <span class="legend-item"><span class="legend-swatch" style="background:#EFF2FB;border-color:#1E40AF"></span>PM 撰寫端</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#E9F4ED;border-color:#166534"></span>RD / QA 執行端</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#FFF5C2;border-color:#B45309"></span>上線 / 監控</span>
+          <span class="legend-item"><span class="legend-line" style="background:#166534"></span>Happy path</span>
+          <span class="legend-item"><span class="legend-line" style="background:#B45309;background-image:repeating-linear-gradient(90deg,#B45309 0 5px,transparent 5px 9px)"></span>Edge case 返工路徑</span>
+        </div>
+      </div>
+
+      <p class="callout notice-warn">
+        <strong>關鍵觀察</strong>：每條返工箭頭都最終指回 <strong>PM</strong>—— 因為 edge case 的最終裁決權在 PM 手上。
+        這意味著 PM 是 PRD 工作流中的 <strong>單點 bottleneck</strong>：愈晚發現的 edge case，<strong>PM 的中斷成本</strong>也愈高。
+      </p>
+    </section>
+
+    <section class="section">
+      <span class="section-anchor">Diagram 2</span>
+      <h2><span class="num">B.</span> AI 輔助下的產品開發流程</h2>
+      <p>
+        以 Interview 2 §4–5 + Interview 1 §10–13 的 AI / MCP 願景為基礎，重畫一份「AI 全面介入」下的流程。
+        關鍵變動：(1) PM 自己用 vibe coding 做 "make it work" 的 POC，繞過 engineer；(2) Engineer 用 AI / MCP 自動找影響的 service 與生成 Tech Spec；(3) PM 自助用 AI 查 metrics，繞過 DA。
+      </p>
+
+      <div class="diagram-card">
+        <span class="diagram-card-eyebrow">Diagram · Synthesis of I·1 + I·2</span>
+        <h3>AI 輔助下的產品開發流程</h3>
+        <p class="diagram-desc">
+          藍色 = PM 自己做的事；綠色 = Engineer 做的事；橘色 = AI 工具；紫色 = MCP / Data Source；黃色 = 決策點。
+          注意：原本人類之間的好幾個 hand-off 都被「人 ↔ AI ↔ MCP」取代或縮短。
+        </p>
+        <div class="mermaid">
+flowchart TD
+    IDEA["PM 有新 idea"]
+    POC["PM 用 vibe coding 做 POC<br/>make it work"]
+    USER["發給用戶試用<br/>+ 收 metrics"]
+    GO{"成果 positive?"}
+    KILL["終止"]
+    PRD["PM 寫正式 PRD<br/>交給 engineer 做 scale"]
+
+    READ["Engineer 自己讀 PRD"]
+    AI_IMPACT["AI 找影響的 service<br/>過去要找 Tech Lead 問"]
+    MCP["MCP / Data Source<br/>跨 team codebase context"]
+    TL{"Tech Lead OK?"}
+    AI_SPEC["AI + MCP 生成 Tech Spec<br/>95% 命中 · 需公司投資"]
+
+    DEV["Engineer 開發 + 自測"]
+    QA["QA"]
+    LAUNCH["上線"]
+
+    METRICS["PM 自助用 AI 查 metrics<br/>過去要找 DA 寫 SQL"]
+
+    IDEA --> POC
+    POC --> USER
+    USER --> GO
+    GO -->|否| KILL
+    GO -->|是 · needs scale| PRD
+
+    PRD --> READ
+    READ --> AI_IMPACT
+    AI_IMPACT <-.-> MCP
+    AI_IMPACT --> TL
+    TL -->|否 · re-think| AI_IMPACT
+    TL -->|是| AI_SPEC
+    AI_SPEC <-.-> MCP
+    AI_SPEC --> DEV
+    DEV --> QA
+    QA --> LAUNCH
+    LAUNCH --> METRICS
+
+    classDef pmDoes fill:#EFF2FB,stroke:#1E40AF,stroke-width:2px,color:#0F1419
+    classDef engDoes fill:#E9F4ED,stroke:#166534,stroke-width:2px,color:#0F1419
+    classDef ai fill:#FDF1DC,stroke:#B45309,stroke-width:2px,color:#0F1419
+    classDef mcp fill:#F5EBF1,stroke:#7E3F65,stroke-width:2px,color:#0F1419
+    classDef decision fill:#FFF5C2,stroke:#B45309,stroke-width:2px,color:#0F1419
+    classDef killNode fill:#FCE4EC,stroke:#9F1239,stroke-width:1.5px,color:#0F1419
+
+    class IDEA pmDoes
+    class POC pmDoes
+    class USER pmDoes
+    class PRD pmDoes
+    class METRICS pmDoes
+    class READ engDoes
+    class DEV engDoes
+    class QA engDoes
+    class LAUNCH engDoes
+    class AI_IMPACT ai
+    class AI_SPEC ai
+    class MCP mcp
+    class GO decision
+    class TL decision
+    class KILL killNode
+        </div>
+        <div class="diagram-legend">
+          <span class="legend-item"><span class="legend-swatch" style="background:#EFF2FB;border-color:#1E40AF"></span>PM 做的事</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#E9F4ED;border-color:#166534"></span>Engineer 做的事</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#FDF1DC;border-color:#B45309"></span>AI 工具</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#F5EBF1;border-color:#7E3F65"></span>MCP / Data Source</span>
+          <span class="legend-item"><span class="legend-swatch" style="background:#FFF5C2;border-color:#B45309"></span>決策點</span>
+        </div>
+      </div>
+
+      <p class="callout">
+        <strong>三個 hand-off 被縮短</strong>：(1) PM → Engineer 的 "make it work" 階段，被 PM 自己的 vibe coding 取代；
+        (2) Engineer → Tech Lead 的「我能不能改這裡」對話，被 AI + MCP 預先收斂；
+        (3) PM → DA 的 metrics 查詢，被 PM 自助 AI 查詢取代。
+      </p>
+      <p class="callout notice-warn">
+        <strong>仍保留的「人類最後一關」</strong>：(1) PRD 還是 engineer 自己讀（怕 AI 漏細節）；
+        (2) Tech Lead 的 OK 仍是 gating step——AI 不能代替 Tech Lead 拍板；
+        (3) Edge case 的最終裁決權仍在 PM。AI 是 augmentation，不是 replacement。
+      </p>
+    </section>
+
+    <section class="section">
+      <span class="section-anchor">Section C</span>
+      <h2><span class="num">C.</span> 跨訪談對照表</h2>
+      <p>整理 Interview 1（iOS Tech Owner, 8 年資歷）與 Interview 2（Backend Engineer, 3 年資歷）在同議題上的一致 / 差異：</p>
+
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>主題</th>
+            <th>Interview 1 — iOS Tech Owner</th>
+            <th>Interview 2 — Backend Engineer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>PRD 起點</td>
+            <td>PM 寫 PRD → Design Review → Designer 畫 Figma → 正式 PRD → RD 內部 review</td>
+            <td>PM 寫 PRD → PRD Review（1hr, 全員）→ 詳評會（只邀 dev）→ Tech Spec</td>
+          </tr>
+          <tr>
+            <td>Tech Spec 流程</td>
+            <td>沒特別提；強調 Tech Owner 在 rough meeting 評估可行性</td>
+            <td><strong>明確分流程</strong>：每個 team 自己的 template，週二/週四 interval review</td>
+          </tr>
+          <tr>
+            <td>AI 使用</td>
+            <td>在 TikTok 時就有開始用 AI 掃 PRD、找 edge case</td>
+            <td><strong>TikTok 時完全沒用 AI</strong>；現在新公司用，但 PRD 還是自己讀，AI 只用來找影響範圍</td>
+          </tr>
+          <tr>
+            <td>Edge case 痛點</td>
+            <td>PRD 不全 → 取決於 PM 經驗</td>
+            <td>同樣痛點：「happy path not so happy」+ <strong>複雜度 × 跨 team 數量</strong>是結構問題</td>
+          </tr>
+          <tr>
+            <td>流程瓶頸</td>
+            <td>Tech Owner 對 code base 理解的限制 → 開發中才發現返工</td>
+            <td>一樣會在開發中、QA 中、甚至上線後才發現 edge case</td>
+          </tr>
+          <tr>
+            <td>MCP / AI Team</td>
+            <td>提到 ByteDance / TikTok 內部正在做「每個 team 都建一個 MCP」</td>
+            <td><strong>驗證</strong>：新公司也有 AI team 做 MCP，「真正讀 PRD 的可能會是 LLM」</td>
+          </tr>
+          <tr>
+            <td>對未來 PM 角色的想像</td>
+            <td>沒特別提</td>
+            <td><strong>大膽預測</strong>：PM 用 vibe coding 自己做 POC，可能 "make it work" 路徑就不需要 engineer 了</td>
+          </tr>
+          <tr>
+            <td>對 DA 角色的觀察</td>
+            <td>沒提</td>
+            <td><strong>PM 用 AI 自助查 metrics，DA 角色被部分削減</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="callout">
+        <strong>論文使用建議</strong>：兩位受訪者在 <strong>edge case 結構性問題</strong>、<strong>MCP / AI Team 趨勢</strong>上互相驗證；
+        但對 <strong>AI 對 PM 角色的影響</strong>，I·2 比 I·1 更激進（從 "PM 寫更好的 PRD" 轉向 "PM 自己做 POC"）。
+        建議在論文中把 I·1 當「組織內視角」、I·2 當「離開後反思的視角」。
+      </p>
+    </section>
+
+  </div>
+</section>
+
 <footer class="site-footer">
   <div class="site-footer-inner">
-    <span>PRD as Boundary Object · Phase One Interview Previews · 2026</span>
+    <span>PRD as Boundary Object · Interview Workbook · 2026</span>
     <span>Wang Wei · King's College London · MSc MTC</span>
   </div>
 </footer>
+
+<!-- Mermaid init — academic muted theme to match site -->
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'base',
+      themeVariables: {
+        fontFamily: "'IBM Plex Sans', 'Noto Sans TC', -apple-system, sans-serif",
+        primaryColor: '#EFF2FB',
+        primaryTextColor: '#0F1419',
+        primaryBorderColor: '#1E40AF',
+        lineColor: '#525866',
+        secondaryColor: '#F7F7F4',
+        tertiaryColor: '#FFFFFF',
+        background: '#FFFFFF',
+        mainBkg: '#FFFFFF',
+        fontSize: '13px'
+      },
+      flowchart: { curve: 'basis', nodeSpacing: 50, rankSpacing: 65, htmlLabels: true }
+    });
+  }
+</script>
 
 
 </body>
