@@ -26,7 +26,8 @@
   --mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
 
   --measure: 68ch;
-  --max-page: 980px;
+  --max-page: 100%;
+  --page-pad: clamp(20px, 4vw, 64px);
 }
 
 /* Scope role accent inside each panel via data-role */
@@ -154,55 +155,74 @@ a:hover { background: var(--accent-soft); }
   color: var(--ink);
 }
 
-/* =====================  TAB NAV  ===================== */
+/* =====================  TAB NAV (sub-tier — card grid selector, NOT sticky)  ===================== */
 .lang-radio, .role-radio { position: absolute; opacity: 0; pointer-events: none; }
 
+/* The selector lives inside content flow as a card grid — not a sticky bar */
 .tab-nav {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: var(--bg);
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
+  position: static;
+  background: transparent;
+  border: 0;
+  margin: 24px 0 36px;
+  z-index: auto;
 }
-
 .tab-nav-inner {
   max-width: var(--max-page);
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  overflow-x: auto;
-  padding: 0 32px;
-  scrollbar-width: none;
+  padding: 0 var(--page-pad);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  overflow: visible;
+  min-height: 0;
 }
-.tab-nav-inner::-webkit-scrollbar { display: none; }
+.tab-nav-inner::-webkit-scrollbar { display: initial; }
 
+/* Card-style role selector */
 .tab-nav-inner > label {
   font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 600;
   letter-spacing: 0;
-  color: var(--ink-soft);
-  padding: 16px 0;
-  margin-right: 28px;
-  border-bottom: 2px solid transparent;
+  color: var(--ink);
+  padding: 18px 20px;
+  margin: 0;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  background: #FFFFFF;
   cursor: pointer;
-  white-space: nowrap;
-  transition: color 0.12s, border-color 0.12s;
-  display: inline-flex;
-  align-items: baseline;
+  white-space: normal;
+  transition: transform 0.15s ease, box-shadow 0.18s ease, border-color 0.15s, background 0.15s, color 0.15s;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 8px;
+  line-height: 1.35;
+  position: relative;
 }
-.tab-nav-inner > label:hover { color: var(--ink); }
+.tab-nav-inner > label:hover {
+  border-color: var(--ink-soft);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+  background: #FFFFFF;
+}
 .tab-nav-inner > label .tab-num {
   font-family: var(--mono);
   font-size: 10px;
   color: var(--ink-faint);
-  font-weight: 400;
-  letter-spacing: 0.04em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
 }
 
-/* language switch (right side of tab nav) */
+/* Lang-suffix (CN text appended after EN label, only visible in CN mode) */
+.lang-suffix {
+  color: var(--ink-faint);
+  font-weight: 400;
+  font-size: 0.92em;
+  margin-left: 2px;
+}
+
+/* language switch — base + top variant (in view-nav) */
 .lang-switch {
   margin-left: auto;
   display: inline-flex;
@@ -233,20 +253,20 @@ a:hover { background: var(--accent-soft); }
   color: var(--ink);
 }
 
-/* active role tab — each role uses its own accent on the underline & number */
-#role-pm:checked       ~ .tab-nav label[for="role-pm"]       { color: var(--ink); border-bottom-color: var(--role-pm); }
-#role-designer:checked ~ .tab-nav label[for="role-designer"] { color: var(--ink); border-bottom-color: var(--role-designer); }
-#role-backend:checked  ~ .tab-nav label[for="role-backend"]  { color: var(--ink); border-bottom-color: var(--role-backend); }
-#role-ios:checked      ~ .tab-nav label[for="role-ios"]      { color: var(--ink); border-bottom-color: var(--role-ios); }
+/* Active card — filled with role accent + lift shadow */
+#role-pm:checked       ~ .tab-nav label[for="role-pm"]       { color: #fff; background: var(--role-pm);       border-color: var(--role-pm);       box-shadow: 0 10px 28px rgba(74,144,226,0.28); }
+#role-designer:checked ~ .tab-nav label[for="role-designer"] { color: #fff; background: var(--role-designer); border-color: var(--role-designer); box-shadow: 0 10px 28px rgba(233,30,99,0.28);  }
+#role-backend:checked  ~ .tab-nav label[for="role-backend"]  { color: #fff; background: var(--role-backend);  border-color: var(--role-backend);  box-shadow: 0 10px 28px rgba(67,160,71,0.28);  }
+#role-ios:checked      ~ .tab-nav label[for="role-ios"]      { color: #fff; background: var(--role-ios);      border-color: var(--role-ios);      box-shadow: 0 10px 28px rgba(245,124,0,0.28); }
 
-#role-pm:checked       ~ .tab-nav label[for="role-pm"]       .tab-num { color: var(--role-pm); }
-#role-designer:checked ~ .tab-nav label[for="role-designer"] .tab-num { color: var(--role-designer); }
-#role-backend:checked  ~ .tab-nav label[for="role-backend"]  .tab-num { color: var(--role-backend); }
-#role-ios:checked      ~ .tab-nav label[for="role-ios"]      .tab-num { color: var(--role-ios); }
+#role-pm:checked       ~ .tab-nav label[for="role-pm"]       .tab-num,
+#role-designer:checked ~ .tab-nav label[for="role-designer"] .tab-num,
+#role-backend:checked  ~ .tab-nav label[for="role-backend"]  .tab-num,
+#role-ios:checked      ~ .tab-nav label[for="role-ios"]      .tab-num { color: rgba(255,255,255,0.78); }
 
 /* active language */
-#lang-cn:checked ~ .tab-nav .lang-switch label[for="lang-cn"],
-#lang-en:checked ~ .tab-nav .lang-switch label[for="lang-en"] {
+#lang-cn:checked ~ .view-nav .lang-switch label[for="lang-cn"],
+#lang-en:checked ~ .view-nav .lang-switch label[for="lang-en"] {
   background: var(--ink);
   color: var(--bg);
 }
@@ -277,7 +297,7 @@ a:hover { background: var(--accent-soft); }
 .panel-wrap {
   max-width: var(--max-page);
   margin: 0 auto;
-  padding: 56px 32px 96px;
+  padding: 56px var(--page-pad) 96px;
 }
 
 /* role hero inside each tab */
@@ -681,50 +701,86 @@ a:hover { background: var(--accent-soft); }
    ============================================================= */
 .view-radio { position: absolute; opacity: 0; pointer-events: none; }
 
+/* ===== VIEW NAV — top-tier, prominent: dark surface, larger text, per-view accent ===== */
 .view-nav {
-  background: var(--bg);
-  border-bottom: 1px solid var(--rule-strong);
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);
+  border-bottom: 0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.15), 0 4px 12px rgba(15, 23, 42, 0.06);
 }
 .view-nav-inner {
   max-width: var(--max-page);
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 var(--page-pad);
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 8px;
+  height: 56px;
 }
 .view-nav-inner > label {
   font-family: var(--sans);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--ink-faint);
-  padding: 18px 0;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #94A3B8;
+  padding: 0 16px;
+  height: 56px;
+  border-bottom: 3px solid transparent;
   cursor: pointer;
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   gap: 10px;
-  transition: color 0.12s, border-color 0.12s;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+  letter-spacing: -0.005em;
 }
-.view-nav-inner > label:hover { color: var(--ink); }
+.view-nav-inner > label:hover {
+  color: #F1F5F9;
+  background: rgba(255,255,255,0.05);
+}
 .view-nav-inner > label .view-num {
   font-family: var(--mono);
   font-size: 10px;
-  color: var(--ink-faint);
-  letter-spacing: 0.06em;
+  color: #64748B;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+.view-nav-inner > label .lang-suffix {
+  color: #64748B;
+  font-weight: 400;
 }
 
-#view-previews:checked  ~ .view-nav label[for="view-previews"],
-#view-findings:checked  ~ .view-nav label[for="view-findings"],
-#view-synthesis:checked ~ .view-nav label[for="view-synthesis"] {
-  color: var(--ink);
-  border-bottom-color: var(--ink);
+/* Per-view accent — color-codes top-tier sections so user can tell which view is active */
+:root {
+  --view-prev: #60A5FA;       /* blue · Previews */
+  --view-find: #C084FC;       /* purple · Findings */
+  --view-syn:  #FBBF24;       /* amber · Synthesis */
 }
-#view-previews:checked  ~ .view-nav label[for="view-previews"]  .view-num,
-#view-findings:checked  ~ .view-nav label[for="view-findings"]  .view-num,
-#view-synthesis:checked ~ .view-nav label[for="view-synthesis"] .view-num {
-  color: var(--ink);
+#view-previews:checked  ~ .view-nav label[for="view-previews"]  { color: #FFFFFF; border-bottom-color: var(--view-prev); background: rgba(96, 165, 250, 0.10); }
+#view-findings:checked  ~ .view-nav label[for="view-findings"]  { color: #FFFFFF; border-bottom-color: var(--view-find); background: rgba(192, 132, 252, 0.10); }
+#view-synthesis:checked ~ .view-nav label[for="view-synthesis"] { color: #FFFFFF; border-bottom-color: var(--view-syn);  background: rgba(251, 191, 36, 0.10); }
+#view-previews:checked  ~ .view-nav label[for="view-previews"]  .view-num { color: var(--view-prev); }
+#view-findings:checked  ~ .view-nav label[for="view-findings"]  .view-num { color: var(--view-find); }
+#view-synthesis:checked ~ .view-nav label[for="view-synthesis"] .view-num { color: var(--view-syn);  }
+
+/* lang-switch inside view-nav — dark variant */
+.view-nav .lang-switch.lang-switch-top {
+  border-color: rgba(255,255,255,0.18);
+  background: transparent;
+}
+.view-nav .lang-switch.lang-switch-top label {
+  background: transparent;
+  color: #94A3B8;
+  border-left-color: rgba(255,255,255,0.18);
+}
+.view-nav .lang-switch.lang-switch-top label:hover {
+  color: #FFFFFF;
+  background: rgba(255,255,255,0.08);
+}
+#lang-cn:checked ~ .view-nav .lang-switch.lang-switch-top label[for="lang-cn"],
+#lang-en:checked ~ .view-nav .lang-switch.lang-switch-top label[for="lang-en"] {
+  background: #FFFFFF;
+  color: #0F172A;
 }
 
 /* Hide previews-only elements when other views are active */
@@ -746,7 +802,7 @@ a:hover { background: var(--accent-soft); }
 .view-hero {
   max-width: var(--max-page);
   margin: 0 auto;
-  padding: 48px 32px 24px;
+  padding: 48px var(--page-pad) 24px;
   border-bottom: 1px solid var(--rule);
 }
 .view-hero-eyebrow {
@@ -780,55 +836,75 @@ a:hover { background: var(--accent-soft); }
    ============================================================= */
 .interview-radio { position: absolute; opacity: 0; pointer-events: none; }
 
+/* Findings sub-tier — same card grid pattern as .tab-nav (NOT sticky) */
 .findings-subnav {
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  background: var(--bg);
-  border-bottom: 1px solid var(--rule);
+  position: static;
+  background: transparent;
+  border: 0;
+  margin: 24px 0 36px;
+  z-index: auto;
 }
 .findings-subnav-inner {
   max-width: var(--max-page);
   margin: 0 auto;
-  padding: 0 32px;
-  display: flex;
-  gap: 28px;
+  padding: 0 var(--page-pad);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  overflow: visible;
+  min-height: 0;
 }
 .findings-subnav-inner > label {
   font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--ink-soft);
-  padding: 14px 0;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  padding: 18px 20px;
+  margin: 0;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  background: #FFFFFF;
   cursor: pointer;
-  display: inline-flex;
-  align-items: baseline;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 8px;
-  white-space: nowrap;
+  white-space: normal;
+  line-height: 1.35;
+  transition: transform 0.15s ease, box-shadow 0.18s ease, border-color 0.15s, background 0.15s, color 0.15s;
 }
 .findings-subnav-inner > label .tab-num {
   font-family: var(--mono);
   font-size: 10px;
   color: var(--ink-faint);
-  letter-spacing: 0.04em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
 }
-.findings-subnav-inner > label:hover { color: var(--ink); }
+.findings-subnav-inner > label:hover {
+  border-color: var(--ink-soft);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+}
 
+/* Active interview card — filled with Findings accent (purple) */
 #interview-1:checked ~ .view-section .findings-subnav label[for="interview-1"],
-#interview-2:checked ~ .view-section .findings-subnav label[for="interview-2"] {
-  color: var(--ink);
-  border-bottom-color: var(--accent);
+#interview-2:checked ~ .view-section .findings-subnav label[for="interview-2"],
+#interview-3:checked ~ .view-section .findings-subnav label[for="interview-3"] {
+  color: #fff;
+  background: var(--view-find);
+  border-color: var(--view-find);
+  box-shadow: 0 10px 28px rgba(192, 132, 252, 0.28);
 }
 #interview-1:checked ~ .view-section .findings-subnav label[for="interview-1"] .tab-num,
-#interview-2:checked ~ .view-section .findings-subnav label[for="interview-2"] .tab-num {
-  color: var(--accent);
+#interview-2:checked ~ .view-section .findings-subnav label[for="interview-2"] .tab-num,
+#interview-3:checked ~ .view-section .findings-subnav label[for="interview-3"] .tab-num {
+  color: rgba(255,255,255,0.78);
 }
 
 .interview-panel { display: none; }
 #interview-1:checked ~ .view-section .interview-panel[data-interview="1"],
-#interview-2:checked ~ .view-section .interview-panel[data-interview="2"] {
+#interview-2:checked ~ .view-section .interview-panel[data-interview="2"],
+#interview-3:checked ~ .view-section .interview-panel[data-interview="3"] {
   display: block;
 }
 
@@ -1324,3 +1400,355 @@ a:hover { background: var(--accent-soft); }
   .consent-body { margin: 0; padding: 0; border: 0; }
   a { color: black; border-bottom: 0; }
 }
+
+/* =====================================================================
+   Interactive TikTok Flow Chart (scoped under .tiktok-iflow)
+   Embedded into Findings §2 of both Interview 1 and Interview 2 panels.
+   Source: interactive-flowchart skill output.
+   ===================================================================== */
+.tiktok-iflow {
+  --tif-role-pm: #4A90E2;
+  --tif-role-design: #E91E63;
+  --tif-role-qa: #F57C00;
+  --tif-role-da: #9C27B0;
+  --tif-role-rd: #43A047;
+  --tif-role-lead: #1B5E20;
+  --tif-role-ai: #546E7A;
+  --tif-role-mix: #37474F;
+  --tif-success: #43A047;
+  --tif-failure: #D32F2F;
+  --tif-done: #FFC107;
+  --tif-highlight: #FF6B00;
+  --tif-card: #FFFFFF;
+  --tif-border: #E2E8F0;
+  --tif-text: #1A202C;
+  --tif-text-light: #4A5568;
+
+  margin-top: 18px;
+  font-family: 'IBM Plex Sans', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  color: var(--tif-text);
+}
+.tiktok-iflow .tif-legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+.tiktok-iflow .tif-legend-item {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.78rem; padding: 4px 11px;
+  border-radius: 14px; background: var(--tif-card);
+  border: 1px solid var(--tif-border); color: var(--tif-text-light);
+}
+.tiktok-iflow .tif-legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+.tiktok-iflow .tif-legend-line { width: 28px; height: 3px; border-radius: 2px; background: var(--tif-success); }
+.tiktok-iflow .tif-legend-line.failure { height: 0; border-bottom: 2px dashed var(--tif-failure); border-radius: 0; background: transparent; }
+
+.tiktok-iflow .hflow-scroll {
+  background: var(--tif-card);
+  border: 1px solid var(--tif-border);
+  border-radius: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.tiktok-iflow .hflow-inner {
+  position: relative;
+  width: 1600px;
+  height: 520px;
+}
+.tiktok-iflow .hflow-svg {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+.tiktok-iflow .hflow-svg .failure-arc { transition: opacity 0.18s, stroke-width 0.18s; }
+.tiktok-iflow .hflow-svg .failure-label { transition: opacity 0.18s; pointer-events: none; }
+.tiktok-iflow .hflow-nodes { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.tiktok-iflow .hflow-node {
+  position: absolute;
+  width: 140px; height: 80px;
+  border-radius: 9px;
+  padding: 10px 8px 8px;
+  cursor: pointer;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  color: white; font-weight: 600;
+  font-size: 0.82rem; line-height: 1.32;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  user-select: none;
+}
+.tiktok-iflow .hflow-node:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.22);
+  z-index: 5;
+}
+.tiktok-iflow .hflow-node.selected {
+  outline: 3px solid var(--tif-highlight);
+  outline-offset: 2px;
+  z-index: 6;
+}
+.tiktok-iflow .hflow-node .num {
+  position: absolute; top: 5px; left: 9px;
+  font-size: 0.66rem; opacity: 0.85;
+  font-weight: 700; line-height: 1;
+}
+.tiktok-iflow .hflow-node .fail-badge {
+  position: absolute; bottom: 4px; right: 6px;
+  font-size: 0.6rem;
+  background: rgba(0,0,0,0.25);
+  padding: 1px 7px; border-radius: 8px;
+  font-weight: 600;
+}
+.tiktok-iflow .hflow-node .name { padding: 0 2px; }
+.tiktok-iflow .hflow-node.tif-pm   { background: var(--tif-role-pm); }
+.tiktok-iflow .hflow-node.tif-des  { background: var(--tif-role-design); }
+.tiktok-iflow .hflow-node.tif-qa   { background: var(--tif-role-qa); }
+.tiktok-iflow .hflow-node.tif-da   { background: var(--tif-role-da); }
+.tiktok-iflow .hflow-node.tif-rd   { background: var(--tif-role-rd); }
+.tiktok-iflow .hflow-node.tif-lead { background: var(--tif-role-lead); }
+.tiktok-iflow .hflow-node.tif-ai   { background: var(--tif-role-ai); }
+.tiktok-iflow .hflow-node.tif-mix  { background: var(--tif-role-mix); }
+.tiktok-iflow .hflow-node.tif-done {
+  background: var(--tif-done); color: var(--tif-text);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12), 0 0 0 4px rgba(255,193,7,0.15);
+}
+.tiktok-iflow .hflow-node.tif-kill {
+  background: var(--tif-failure);
+  height: 46px; font-size: 0.83rem;
+  box-shadow: 0 2px 6px rgba(211,47,47,0.3);
+}
+
+.tiktok-iflow .detail-below {
+  margin-top: 18px;
+  background: var(--tif-card);
+  border: 1px solid var(--tif-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.tiktok-iflow .detail-empty {
+  padding: 50px 20px; text-align: center;
+  color: var(--tif-text-light); font-size: 0.95rem;
+}
+.tiktok-iflow .detail-header {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 22px;
+  background: linear-gradient(135deg, #FAFBFC, #F0F4F8);
+  border-bottom: 1px solid var(--tif-border);
+}
+.tiktok-iflow .detail-num {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--tif-text); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.92rem; flex-shrink: 0;
+}
+.tiktok-iflow .detail-num.tif-pm   { background: var(--tif-role-pm); }
+.tiktok-iflow .detail-num.tif-des  { background: var(--tif-role-design); }
+.tiktok-iflow .detail-num.tif-qa   { background: var(--tif-role-qa); }
+.tiktok-iflow .detail-num.tif-da   { background: var(--tif-role-da); }
+.tiktok-iflow .detail-num.tif-rd   { background: var(--tif-role-rd); }
+.tiktok-iflow .detail-num.tif-ai   { background: var(--tif-role-ai); }
+.tiktok-iflow .detail-num.tif-mix  { background: var(--tif-role-mix); }
+.tiktok-iflow .detail-num.tif-done { background: var(--tif-done); color: var(--tif-text); }
+.tiktok-iflow .detail-header h3 { font-size: 1.05rem; line-height: 1.4; margin: 0; }
+
+.tiktok-iflow .detail-3col {
+  display: grid;
+  grid-template-columns: 0.7fr 1.6fr 1.1fr;
+  gap: 0;
+}
+@media (max-width: 900px) { .tiktok-iflow .detail-3col { grid-template-columns: 1fr; } }
+.tiktok-iflow .dcol {
+  padding: 16px 22px;
+  border-right: 1px solid var(--tif-border);
+}
+.tiktok-iflow .dcol:last-child { border-right: none; }
+@media (max-width: 900px) {
+  .tiktok-iflow .dcol { border-right: none; border-bottom: 1px solid var(--tif-border); }
+  .tiktok-iflow .dcol:last-child { border-bottom: none; }
+}
+.tiktok-iflow .dcol h4 {
+  font-size: 0.7rem; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--tif-text-light);
+  margin: 0 0 10px; font-weight: 700;
+}
+.tiktok-iflow .dcol.what-col h4  { color: var(--tif-role-rd); }
+.tiktok-iflow .dcol.output-col h4 { color: #B45309; }
+
+.tiktok-iflow .role-tag {
+  display: inline-block;
+  font-size: 0.74rem; padding: 3px 10px;
+  border-radius: 10px; margin: 2px 4px 4px 0;
+  font-weight: 600;
+  background: #E2E8F0; color: var(--tif-text);
+}
+.tiktok-iflow .role-tag.t-pm   { background: var(--tif-role-pm); color: white; }
+.tiktok-iflow .role-tag.t-des  { background: var(--tif-role-design); color: white; }
+.tiktok-iflow .role-tag.t-qa   { background: var(--tif-role-qa); color: white; }
+.tiktok-iflow .role-tag.t-da   { background: var(--tif-role-da); color: white; }
+.tiktok-iflow .role-tag.t-rd   { background: var(--tif-role-rd); color: white; }
+.tiktok-iflow .role-tag.t-lead { background: var(--tif-role-lead); color: white; }
+.tiktok-iflow .role-tag.t-ai   { background: var(--tif-role-ai); color: white; }
+
+.tiktok-iflow .subsection { margin-bottom: 12px; }
+.tiktok-iflow .subsection:last-child { margin-bottom: 0; }
+.tiktok-iflow .sublabel {
+  font-size: 0.82rem; font-weight: 700;
+  margin-bottom: 5px; padding-left: 10px;
+  border-left: 3px solid var(--tif-text-light);
+}
+.tiktok-iflow .sublabel.did      { border-left-color: #3B82F6; color: #1D4ED8; }
+.tiktok-iflow .sublabel.pain     { border-left-color: var(--tif-failure); color: #991B1B; }
+.tiktok-iflow .sublabel.solution { border-left-color: #10B981; color: #065F46; }
+.tiktok-iflow .sublabel.happy    { border-left-color: var(--tif-success); color: #166534; }
+.tiktok-iflow .sublabel.failure-out { border-left-color: var(--tif-failure); color: #991B1B; }
+
+.tiktok-iflow .subcontent {
+  font-size: 0.85rem; line-height: 1.6;
+  padding-left: 13px; color: var(--tif-text);
+}
+.tiktok-iflow .subcontent ul, .tiktok-iflow ul.subcontent {
+  list-style: none; padding-left: 13px;
+}
+.tiktok-iflow .subcontent li, .tiktok-iflow ul.subcontent li {
+  padding: 3px 0 3px 14px;
+  position: relative;
+}
+.tiktok-iflow .subcontent li::before, .tiktok-iflow ul.subcontent li::before {
+  content: '·'; position: absolute; left: 0;
+  color: var(--tif-text-light); font-weight: 700;
+}
+
+.tiktok-iflow .failure-list { list-style: none; padding-left: 13px; margin: 0; }
+.tiktok-iflow .failure-list li {
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  border-radius: 6px;
+  padding: 7px 11px;
+  margin: 5px 0;
+  list-style: none;
+  font-size: 0.85rem;
+}
+.tiktok-iflow .failure-list li::before { display: none; }
+.tiktok-iflow .failure-list .goto {
+  background: #FEE2E2;
+  color: #991B1B;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 600; font-size: 0.76rem;
+  cursor: pointer;
+  text-decoration: underline; text-underline-offset: 2px;
+}
+.tiktok-iflow .failure-list .goto:hover { background: #FCA5A5; color: white; }
+.tiktok-iflow .failure-list .kill-tag {
+  background: #1F2937;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 600; font-size: 0.76rem;
+}
+.tiktok-iflow .muted { color: var(--tif-text-light); font-style: italic; }
+
+.tiktok-iflow .iflow-hint {
+  font-size: 0.82rem;
+  color: var(--tif-text-light);
+  margin: 0 0 10px;
+}
+.tiktok-iflow .iflow-hint strong { color: #B45309; }
+
+/* Chip stacks below nodes — used in Synthesis Diagram 1 */
+.tiktok-iflow .hflow-tag-stack {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  pointer-events: none;
+  z-index: 2;
+}
+.tiktok-iflow .hflow-tag-stack.stack-left { align-items: flex-start; }
+.tiktok-iflow .hflow-tag-stack.stack-right {
+  align-items: flex-end;
+  transform: translateX(-100%);
+}
+.tiktok-iflow .hflow-tag {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 9px;
+  font-size: 0.66rem;
+  font-weight: 600;
+  white-space: nowrap;
+  max-width: 78px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+/* Source chips: who from the interviewees observed this stage */
+.tiktok-iflow .hflow-tag.src-mobile { background: #FCE4EC; color: #9F1239; border: 1px solid #FBCFE8; }
+.tiktok-iflow .hflow-tag.src-be     { background: #DBEAFE; color: #1E3A8A; border: 1px solid #BFDBFE; }
+.tiktok-iflow .hflow-tag.src-pm     { background: #DCFCE7; color: #166534; border: 1px solid #BBF7D0; }
+/* Role chips: actors involved in the stage (ordered by importance) */
+.tiktok-iflow .hflow-tag.role-chip {
+  background: #F8FAFC;
+  color: #334155;
+  border: 1px solid #E2E8F0;
+}
+.tiktok-iflow .hflow-tag.role-chip.lead { background: #FEF3C7; color: #92400E; border-color: #FDE68A; }
+.tiktok-iflow .hflow-tag.role-chip.pm   { background: #EFF6FF; color: #1E40AF; border-color: #DBEAFE; }
+.tiktok-iflow .hflow-tag.role-chip.rd   { background: #ECFDF5; color: #065F46; border-color: #D1FAE5; }
+.tiktok-iflow .hflow-tag.role-chip.qa   { background: #FFF7ED; color: #9A3412; border-color: #FED7AA; }
+.tiktok-iflow .hflow-tag.role-chip.da   { background: #F5F3FF; color: #5B21B6; border-color: #DDD6FE; }
+.tiktok-iflow .hflow-tag.role-chip.des  { background: #FCE7F3; color: #9D174D; border-color: #FBCFE8; }
+.tiktok-iflow .hflow-tag.role-chip.ai   { background: #F1F5F9; color: #334155; border-color: #CBD5E1; }
+
+/* =====================================================================
+   Per-view tinted backgrounds + section card backgrounds
+   (added to break the previously monotone single-color layout)
+   ===================================================================== */
+
+/* Tint the page background per active view */
+body { transition: background-color 0.25s ease; }
+#view-previews:checked  ~ .view-nav,
+#view-previews:checked  ~ .tab-nav,
+#view-previews:checked  ~ .hero,
+#view-previews:checked  ~ main { /* keep default warm cream */ }
+html:has(#view-findings:checked)  body { background: #F4F4FB; }
+html:has(#view-synthesis:checked) body { background: #FBF6EE; }
+
+/* Fallback for browsers without :has() — apply to view-section directly */
+.view-section[data-view="findings"]  { background: #F4F4FB; }
+.view-section[data-view="synthesis"] { background: #FBF6EE; }
+
+/* Hero (top banner) — tint per view */
+.hero {
+  background: linear-gradient(180deg, #EFF6FF 0%, transparent 100%);
+  padding-bottom: 36px;
+}
+.view-section[data-view="findings"]  .view-hero { background: linear-gradient(180deg, #F3E8FF 0%, transparent 100%); border-bottom-color: rgba(192, 132, 252, 0.25); }
+.view-section[data-view="synthesis"] .view-hero { background: linear-gradient(180deg, #FEF3C7 0%, transparent 100%); border-bottom-color: rgba(251, 191, 36, 0.30); }
+
+/* Section cards — give each .section a soft card surface to break long flat pages */
+.panel-wrap > .section,
+.view-section .panel-wrap > .section {
+  background: #FFFFFF;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 28px 32px;
+  margin: 22px 0;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+}
+.panel-wrap > .section + .section { margin-top: 22px; }
+.panel-wrap > .section .section-anchor {
+  display: inline-block;
+  margin-bottom: 6px;
+  padding: 3px 10px;
+  background: #EEF2F7;
+  color: var(--ink-soft);
+  border-radius: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
+/* Per-view section accent stripe (left border) */
+.view-section[data-view="findings"]  .panel-wrap > .section { border-left: 4px solid #DDD6FE; }
+.view-section[data-view="synthesis"] .panel-wrap > .section { border-left: 4px solid #FDE68A; }
+.view-section[data-view="findings"]  .panel-wrap > .section .section-anchor { background: #EDE9FE; color: #5B21B6; }
+.view-section[data-view="synthesis"] .panel-wrap > .section .section-anchor { background: #FEF3C7; color: #92400E; }
+
