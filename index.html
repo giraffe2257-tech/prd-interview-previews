@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=card-grid-selector">
+<link rel="stylesheet" href="styles.css?v=mermaid-lazy-render">
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 </head>
 <body>
@@ -1274,19 +1274,19 @@
           <p class="diagram-desc"><span class="lang-en">5 roles × 5 derived artefacts. Solid lines = "primary output / required reading"; dotted lines = "what RD additionally must read in order to write the Tech Design Document".</span><span class="lang-cn">五個角色 × 五份產出文件。雙線表示「主要產出 / 必讀關係」，虛線表示「RD 為了寫 Tech Design Document 必須額外讀的派生文件」。</span></p>
           <div class="mermaid">
 flowchart TD
-    PM["PM<br/>Product Knowledge"]
-    PRD["PRD<br/>設計意圖的 SSOT"]
-    Designer["Designer<br/>Design System"]
-    QA["QA<br/>主要靠 PRD"]
-    DA["DA<br/>Data Center"]
-    RD["RD<br/>Code Base"]
-    Figma["Figma"]
-    TestCase["Test Case"]
-    EventSpec["Event Spec"]
-    TDD["Tech Design Document<br/>RD 的開發契約"]
-    CB["Code Base<br/>運行行為的 SSOT"]
+    PM(["👤 <b>PM</b><br/>Domain: Product Knowledge"])
+    PRD["📄 <b>PRD</b><br/><i>設計意圖的 SSOT</i><br/>(撰寫於 Lark)"]
+    Designer(["🎨 <b>Designer</b><br/>Domain: Design System"])
+    QA(["✅ <b>QA</b><br/>Domain: 主要靠 PRD"])
+    DA(["📊 <b>DA</b><br/>Domain: Data Center"])
+    RD(["💻 <b>RD</b><br/>Domain: Code Base"])
+    Figma["🎨 Figma"]
+    TestCase["✅ Test Case"]
+    EventSpec["📊 Event Tracking Spec"]
+    TDD["📋 <b>Tech Design Document</b><br/><i>RD 的開發契約</i>"]
+    CB[("💾 Code Base<br/><i>運行行為的 SSOT</i>")]
 
-    PM ==>|撰寫| PRD
+    PM ==>|"撰寫"| PRD
     PRD ==>|讀| Designer
     PRD ==>|讀| QA
     PRD ==>|讀| DA
@@ -1300,32 +1300,32 @@ flowchart TD
     TestCase -.->|RD 必讀| RD
     EventSpec -.->|RD 必讀| RD
 
-    RD ==>|整合| TDD
-    CB -.->|參考 / 寫入| RD
+    RD ==>|"整合 + code base"| TDD
+    CB -.->|"參考 / 寫入"| RD
 
-    classDef pmStyle fill:#1E40AF,stroke:#1E3A8A,color:#fff
-    classDef desStyle fill:#7E3F65,stroke:#5A2D49,color:#fff
-    classDef qaStyle fill:#B45309,stroke:#7C3B05,color:#fff
-    classDef daStyle fill:#7E3F65,stroke:#5A2D49,color:#fff
-    classDef rdStyle fill:#166534,stroke:#0F4023,color:#fff
-    classDef prdStyle fill:#FFF5C2,stroke:#92400E,color:#1A202C
-    classDef tddStyle fill:#FDF1DC,stroke:#92400E,color:#1A202C
-    classDef figStyle fill:#F5EBF1,stroke:#7E3F65,color:#1A202C
-    classDef tcStyle fill:#FDF1DC,stroke:#B45309,color:#1A202C
-    classDef esStyle fill:#F5EBF1,stroke:#7E3F65,color:#1A202C
-    classDef cbStyle fill:#0F1419,stroke:#000,color:#fff
+    classDef pmStyle fill:#4A90E2,stroke:#2C5282,color:#fff,font-weight:bold;
+    classDef desStyle fill:#E91E63,stroke:#9F1239,color:#fff,font-weight:bold;
+    classDef qaStyle fill:#F57C00,stroke:#9A3412,color:#fff,font-weight:bold;
+    classDef daStyle fill:#9C27B0,stroke:#581C87,color:#fff,font-weight:bold;
+    classDef rdStyle fill:#43A047,stroke:#1B5E20,color:#fff,font-weight:bold;
+    classDef prdStyle fill:#FFC107,stroke:#92400E,color:#1A202C,font-weight:bold;
+    classDef tddStyle fill:#FFE082,stroke:#92400E,color:#1A202C,font-weight:bold;
+    classDef figStyle fill:#FCE4EC,stroke:#9F1239,color:#1A202C;
+    classDef tcStyle fill:#FFE0B2,stroke:#9A3412,color:#1A202C;
+    classDef esStyle fill:#E1BEE7,stroke:#581C87,color:#1A202C;
+    classDef cbStyle fill:#37474F,stroke:#000,color:#fff,font-weight:bold;
 
-    class PM pmStyle
-    class Designer desStyle
-    class QA qaStyle
-    class DA daStyle
-    class RD rdStyle
-    class PRD prdStyle
-    class TDD tddStyle
-    class Figma figStyle
-    class TestCase tcStyle
-    class EventSpec esStyle
-    class CB cbStyle
+    class PM pmStyle;
+    class Designer desStyle;
+    class QA qaStyle;
+    class DA daStyle;
+    class RD rdStyle;
+    class PRD prdStyle;
+    class TDD tddStyle;
+    class Figma figStyle;
+    class TestCase tcStyle;
+    class EventSpec esStyle;
+    class CB cbStyle;
           </div>
           <div class="diagram-legend">
             <span class="legend-item"><span class="lang-en">— primary output / required reading</span><span class="lang-cn">— 主要產出 / 必讀</span></span>
@@ -1351,49 +1351,43 @@ flowchart TD
           </p>
           <div class="mermaid">
 flowchart TD
-    PM["PM 有新需求"]
-    Q["需求 X 會涉及哪些 team？<br/>各 team 怎麼處理 edge case？"]
-    Main["MCP 主視窗<br/>路由 + 聚合"]
+    PM(["👤 <b>PM</b><br/>有新需求"])
+    Q[/"💬 「我要做需求 X<br/>會涉及哪些 team？<br/>各 team 會怎麼處理 edge case？」"/]
+    Main(["🌐 <b>MCP 主視窗</b><br/>路由 + 聚合"])
 
     PM ==>|提問| Q
     Q ==> Main
 
-    Main ==>|自動識別| Live["Live MCP"]
-    Main ==>|自動識別| Legal["Legal MCP"]
-    Main ==>|自動識別| Profile["Profile MCP"]
-    Main ==>|自動識別| Gift["Gift MCP"]
+    Main ==>|自動識別| Live["🎥 <b>Live MCP</b><br/>code+docs+LLM"]
+    Main ==>|自動識別| Legal["⚖️ <b>Legal MCP</b><br/>code+docs+LLM"]
+    Main ==>|自動識別| Profile["👤 <b>Profile MCP</b><br/>code+docs+LLM"]
+    Main ==>|自動識別| Gift["🎁 <b>Gift MCP</b><br/>code+docs+LLM"]
 
-    Live --> LiveAns["直播框架邏輯"]
-    Legal --> LegalAns["封禁 / 合規"]
-    Profile --> ProfileAns["主播彈窗"]
-    Gift --> GiftAns["禮物 trigger"]
+    Live --> LiveAns["直播框架邏輯<br/>聯播後處理"]
+    Legal --> LegalAns["封禁 / 18+ /<br/>直播間合規檢查"]
+    Profile --> ProfileAns["主播彈窗<br/>個資處理"]
+    Gift --> GiftAns["特殊禮物<br/>trigger 條件"]
 
-    LiveAns ==> Agg["整合自然語言回應<br/>涉及 4 team，各邊界…"]
+    LiveAns ==> Agg(["✨ <b>整合自然語言回應</b><br/>「涉及 4 team；<br/>各邊界處理是...」"])
     LegalAns ==> Agg
     ProfileAns ==> Agg
     GiftAns ==> Agg
 
-    Agg ==> PMOut["PM 收到完整跨團隊資訊<br/>可寫含 edge case 的 PRD"]
+    Agg ==> PMOut(["👤 <b>PM 收到完整跨團隊資訊</b><br/>可寫含 edge case 的 PRD"])
 
-    classDef pmStyle fill:#1E40AF,stroke:#1E3A8A,color:#fff
-    classDef qStyle fill:#FFF5C2,stroke:#B45309,color:#1A202C
-    classDef mainStyle fill:#B45309,stroke:#7C3B05,color:#fff
-    classDef teamStyle fill:#0F1419,stroke:#000,color:#fff
-    classDef ansStyle fill:#E9F4ED,stroke:#166534,color:#1A202C
+    classDef pmStyle fill:#4A90E2,stroke:#2C5282,color:#fff,font-weight:bold;
+    classDef qStyle fill:#FFF8E1,stroke:#92400E,color:#1A202C;
+    classDef mainStyle fill:#F9A825,stroke:#9F6000,color:#1A202C,font-weight:bold;
+    classDef teamStyle fill:#37474F,stroke:#1A1A1A,color:#fff;
+    classDef ansStyle fill:#C8E6C9,stroke:#1B5E20,color:#1A202C;
+    classDef pmOutStyle fill:#4A90E2,stroke:#2C5282,color:#fff,font-weight:bold;
 
-    class PM pmStyle
-    class PMOut pmStyle
-    class Q qStyle
-    class Main mainStyle
-    class Agg mainStyle
-    class Live teamStyle
-    class Legal teamStyle
-    class Profile teamStyle
-    class Gift teamStyle
-    class LiveAns ansStyle
-    class LegalAns ansStyle
-    class ProfileAns ansStyle
-    class GiftAns ansStyle
+    class PM pmStyle;
+    class PMOut pmOutStyle;
+    class Q qStyle;
+    class Main,Agg mainStyle;
+    class Live,Legal,Profile,Gift teamStyle;
+    class LiveAns,LegalAns,ProfileAns,GiftAns ansStyle;
           </div>
         </div>
       </section>
@@ -2242,22 +2236,37 @@ flowchart TD
 <!-- Mermaid init — academic muted theme to match site -->
 <script>
   if (window.mermaid) {
+    // startOnLoad MUST be false here: this is a radio-driven SPA where panels
+    // start as display:none. If Mermaid auto-renders on DOMContentLoaded, the
+    // .mermaid divs have zero dimensions and Mermaid produces a broken SVG
+    // marked data-processed="true" — it then never re-renders when the user
+    // navigates to the section, showing "Syntax error in text" forever.
     mermaid.initialize({
-      startOnLoad: true,
-      theme: 'base',
-      themeVariables: {
-        fontFamily: "'IBM Plex Sans', 'Noto Sans TC', -apple-system, sans-serif",
-        primaryColor: '#EFF2FB',
-        primaryTextColor: '#0F1419',
-        primaryBorderColor: '#1E40AF',
-        lineColor: '#525866',
-        secondaryColor: '#F7F7F4',
-        tertiaryColor: '#FFFFFF',
-        background: '#FFFFFF',
-        mainBkg: '#FFFFFF',
-        fontSize: '13px'
-      },
-      flowchart: { curve: 'basis', nodeSpacing: 50, rankSpacing: 65, htmlLabels: true }
+      startOnLoad: false,
+      theme: 'default',
+      flowchart: { curve: 'basis', htmlLabels: true, padding: 14 },
+      securityLevel: 'loose',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif'
+    });
+
+    // Render only diagrams that are currently visible. Re-check on every radio
+    // change (view / interview / role / lang) since those flip panel visibility.
+    async function renderVisibleMermaid() {
+      const divs = document.querySelectorAll('.mermaid:not([data-processed="true"])');
+      for (const div of divs) {
+        if (div.offsetParent === null) continue;     // still display:none
+        try {
+          await window.mermaid.run({ nodes: [div] });
+        } catch (e) {
+          console.error('[mermaid render]', e);
+        }
+      }
+    }
+    window.addEventListener('load', renderVisibleMermaid);
+    document.addEventListener('change', e => {
+      if (e.target.matches('.view-radio, .interview-radio, .role-radio, .lang-radio')) {
+        setTimeout(renderVisibleMermaid, 50);
+      }
     });
   }
 </script>
@@ -3906,6 +3915,7 @@ flowchart TD
   else init();
 })();
 </script>
+
 
 
 </body>
